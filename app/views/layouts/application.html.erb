@@ -9,23 +9,35 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%# application layout styled for Twitter Bootstrap 2.3 %>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
+
+
+<!-- Part 1: Wrap all page content here -->
+<div id="wrap">
+  <header>
+    <%= render 'layouts/navigation' %>
+  </header>
+  <main role="main">
+      <!-- Begin page content -->
       <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
+        <div class="row">
+          <div class="span12">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
           </div>
-          <footer>
-          </footer>
         </div>
       </div>
-    </main>
-  </body>
+  </main>
+  <div id="push"></div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <p class="muted credit">Footer <a href="http://nocebo.se">Thomas Ochman</a>.</p>
+  </div>
+</div>
+
+
+
+</body>
 </html>
+

@@ -14,6 +14,7 @@ gem 'high_voltage'
 gem 'simple_form'
 gem 'devise'
 gem 'json'
+gem 'factory_girl_rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -21,11 +22,27 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
-group :test do
-  gem 'cucumber'
-  gem 'cucumber-rails', :require => false
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'database_cleaner'
+group :development, :test do
+  gem 'metric_fu'
+  gem 'database_cleaner', '1.0.1'
   gem 'launchy'
+  gem 'simplecov'
+  gem 'rspec-rails'
+  gem 'execjs'
+  gem 'rack_session_access'
+  gem 'simplecov', :require => false
+end
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'minitest', '~> 4.7.1'
+  gem 'ZenTest'
+  gem 'capybara', '2.0.2'
+  gem 'capybara-webkit', '~> 1.0.0'
+  gem 'webrat'
+  gem 'factory_girl_rails', :require => false
+  gem 'webmock'
+  gem 'uri-handler'
+  gem 'selenium'
+  gem 'selenium-client'
 end
