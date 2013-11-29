@@ -7,5 +7,4 @@ Background:
 
 Scenario: Acces GitHub API
   Given I am on the "contributors" page
-  Then show me the page
   Then I should see "Project contributors"
