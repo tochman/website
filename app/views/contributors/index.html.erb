@@ -1,5 +1,13 @@
 <h1>Project contributors</h1>
 
-
-
-
+    <div class="media">
+      <%= @result.each do |contributor| %>
+          <a class="pull-left" href="#">
+            <img class="media-object" data-src="<%= contributor['avatar_url']%>">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading"><%= contributor['id'], contributor['login']%></h4>
+            </div>
+          </div>
+      <% end %>
+    </div>

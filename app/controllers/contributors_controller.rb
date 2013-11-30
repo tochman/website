@@ -1,11 +1,13 @@
 class ContributorsController < ApplicationController
 
-  require "rubygems"
-  require "json"
-  require "net/http"
-  require "uri"
-  def index
 
+  def index
+    require 'rubygems'
+    require 'json'
+    url = 'https://api.github.com/repos/tansaku/LocalSupport/contributors'
+    response = Net::HTTP.get_response(URI.parse(url))
+    data = response.body
+    @result = JSON.parse(data)
   end
 
   def get_json
@@ -24,7 +26,7 @@ class ContributorsController < ApplicationController
         id = doc['id'] #reference properties like this
         login = doc['login']
         avatar = doc[avatar_url]
-        contributors.push [ id,  login, avatar]
+
 
       end
     else
