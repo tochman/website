@@ -5,6 +5,8 @@ Feature: In order to view the contributors to a project
 
 Background:
 
-Scenario: Acces GitHub API
+
+Scenario: Access Contributors page
   Given I am on the "contributors" page
   Then I should see "Project contributors"
+  Then show me the page

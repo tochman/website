@@ -1,13 +1,17 @@
 <h1>Project contributors</h1>
+<p>The development team behind this project:</p>
 
-    <div class="media">
-      <%= @result.each do |contributor| %>
-          <a class="pull-left" href="#">
-            <img class="media-object" data-src="<%= contributor['avatar_url']%>">
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading"><%= contributor['id'], contributor['login']%></h4>
-            </div>
-          </div>
-      <% end %>
-    </div>
+<ul class="media-list">
+  <% @result.each do |contributor| %>
+      <li class="media">
+        <a class="pull-left" href="<%= contributor['html_url'] %>">
+          <img class="media-object" src="<%= contributor['avatar_url'] %>" style="width:100px;height:100px" class="img-circle">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><%= contributor['login'] %></h4>
+          <a href="<%= contributor['html_url'] %>"> <%= contributor['html_url'] %></a>
+          <p class="media-heading"> <%= contributor['contributions'] %> contributions.</p>
+        </div>
+      </li>
+  <% end %>
+</ul>
