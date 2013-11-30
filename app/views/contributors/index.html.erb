@@ -1,8 +1,9 @@
+<% content_for :title do %>Project contributors<% end %>
+<section id="contributors">
 <h1>Project contributors</h1>
 <p>The development team behind this project:</p>
-
 <ul class="media-list">
-  <% @result.each do |contributor| %>
+  <% @result[0...10].each  do |contributor| %>
       <li class="media">
         <a class="pull-left" href="<%= contributor['html_url'] %>">
           <img class="media-object" src="<%= contributor['avatar_url'] %>" style="width:100px;height:100px" class="img-circle">
@@ -15,3 +16,4 @@
       </li>
   <% end %>
 </ul>
+</section>

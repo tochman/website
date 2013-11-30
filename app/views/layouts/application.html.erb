@@ -12,10 +12,14 @@
 
 
 <!-- Part 1: Wrap all page content here -->
-<div id="wrap">
+
   <header>
     <%= render 'layouts/navigation' %>
+    <% if current_page? root_path %>
+    <%= render 'layouts/carousel' %>
+    <% end %>
   </header>
+<div id="wrap">
   <main role="main">
       <!-- Begin page content -->
       <div class="container">
