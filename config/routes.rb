@@ -1,4 +1,5 @@
 Website::Application.routes.draw do
+  devise_for :users
   root :to => 'visitors#new'
   get '/contributors', :to => 'contributors#index'
   get '/404', :to => 'errors#not_found'
