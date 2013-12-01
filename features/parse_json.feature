@@ -9,4 +9,7 @@ Background:
 Scenario: Access Contributors page
   Given I am on the "contributors" page
   Then I should see "Project contributors"
-  Then show me the page
+  And I should see "tansaku"
+  And I should see a link that points to "https://github.com/tansaku"
+  And I should see "tochman"
+

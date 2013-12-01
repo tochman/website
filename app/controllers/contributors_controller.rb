@@ -2,13 +2,11 @@ class ContributorsController < ApplicationController
   require 'rubygems'
   require 'json'
 
-
   def index
-
     url = 'https://api.github.com/repos/tansaku/LocalSupport/contributors'
     response = Net::HTTP.get_response(URI.parse(url))
     data = response.body
-    @result = JSON.parse(data)
+    @contributors = JSON.parse(data)
   end
 
 end

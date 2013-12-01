@@ -1,3 +1,17 @@
+And(/^the response status should be "(.*?)"$/) do |code|
+  page.status_code.should eql code
+end
+
+And(/^the response status should be 404$/) do
+  page.status_code.should eql 404
+end
+
+And(/^the response status should be 500$/) do
+  page.should raise_error(ErrorsController)
+
+  #page.status_code.should eql 500
+end
+
 Given(/^(?:|I )am on the "(.*?)" page$/) do |page|
   case page
     when "Home" then visit root_path('show')
@@ -5,6 +19,7 @@ Given(/^(?:|I )am on the "(.*?)" page$/) do |page|
     when "sign up" then visit new_user_registration_path
     when "sign in" then visit new_user_session_path
     when "about" then visit page_path('About')
+    when "foobar" then visit ("/#{page}")
   end
 end
 
@@ -46,4 +61,12 @@ end
 
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
+end
+
+Then(/^the page should be titled "(.*?)"$/) do |title|
+  page.should have_selector("title", title)
+end
+
+Then /^I should see a link that points to "([^"]*)"$/ do |href_destination|
+  page.should have_xpath("//a[@href='#{href_destination}']")
 end
