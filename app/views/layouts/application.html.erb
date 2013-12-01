@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <%=  yield(:head)%>
   </head>
   <body>
 
@@ -23,10 +24,14 @@
   <main role="main">
       <!-- Begin page content -->
       <div class="container">
+        <%= render 'layouts/flash_messages'%>
         <div class="row">
           <div class="span12">
-            <%= render 'layouts/messages' %>
+            <% if current_page? root_path %>
+                <%= render 'layouts/navigation_links' %>
+            <% else %>
             <%= yield %>
+            <% end %>
           </div>
         </div>
       </div>
