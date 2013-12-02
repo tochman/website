@@ -1,4 +1,6 @@
 Website::Application.routes.draw do
+  resources :projects
+
   devise_for :users
   root :to => 'visitors#new'
   get '/contributors', :to => 'contributors#index'

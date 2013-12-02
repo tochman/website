@@ -1,5 +1,5 @@
 And(/^the response status should be "(.*?)"$/) do |code|
-  page.status_code.should eql code
+  page.status_code.should eql(code.to_i)
 end
 
 And(/^the response status should be 404$/) do
@@ -7,9 +7,7 @@ And(/^the response status should be 404$/) do
 end
 
 And(/^the response status should be 500$/) do
-  page.should raise_error(ErrorsController)
-
-  #page.status_code.should eql 500
+  page.status_code.should eql 500
 end
 
 Given(/^(?:|I )am on the "(.*?)" page$/) do |page|
@@ -21,6 +19,7 @@ Given(/^(?:|I )am on the "(.*?)" page$/) do |page|
     when "about" then visit page_path('About')
     when "foobar" then visit ("/#{page}")
   end
+
 end
 
 Then(/^(?:|I )should see "(.*?)"$/) do |string|

@@ -1,0 +1,20 @@
+<% #TODO: List projects not marked as private %>
+
+<!--div class="featurette">
+  <img class="featurette-image pull-right" src="<%= image_path('screen1.png') %>">
+  <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
+  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+  <a class="btn btn-large btn-primary pull-right" href="#">Get involved!</a>
+
+</div-->
+
+<% @projects.each do |project| %>
+
+    <div class="featurette">
+      <img class="featurette-image pull-left" src="<%= image_path('AV-avatar2.png') %>">
+      <h2 class="featurette-heading"><%= "#{project.title}" %>. <span class="muted">It'll blow your mind.</span></h2>
+      <p class="lead"><%= "#{project.body}" %></p>
+      <!--a class="btn btn-large btn-primary pull-left" href="#">Get involved!</a-->
+    </div>
+    <hr class="featurette-divider">
+<% end %>
