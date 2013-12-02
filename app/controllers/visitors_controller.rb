@@ -1,10 +1,12 @@
 class VisitorsController < ApplicationController
 
+
   def new
+    @projects = Project.where(:public => true)
+    #@projects = Project.all
   end
 
-  def show_projects
-    #TODO: get all instances of project to show in partial
+  def index
   end
 
 end
