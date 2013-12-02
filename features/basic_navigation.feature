@@ -4,6 +4,7 @@ Feature: In order to make sure relevant content is shown to the user
 
 Scenario: Make sure Twitter Bootstrap navbar is present
   Given I am on the "Home" page
+  Then the response status should be "200"
   Then I should see a navigation bar
   And I should see navigation links
   And I should see the "Contributors" link
@@ -14,7 +15,7 @@ Scenario: Make sure Twitter Bootstrap navbar is present
 Scenario: Show custom 404 page
   When I am on the "foobar" page
   Then the page should be titled "404 File Not Found"
-  And the response status should be 404
+  And the response status should be "404"
   Then show me the page
   And I should see "We're sorry, but we couldn't find the page you requested"
 
