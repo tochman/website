@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title , :input_html => { :class => "span4" }, :placeholder => "A short, descriptive title – up to 4 words"%>
-    <%= f.input :body, :input_html => { :class => "span8", :style => "height: 250px;" }, :placeholder => "A marketing summary of the project"%>
+    <%= f.input :title , :input_html => { :class => "col-md-4" }, :placeholder => "A short, descriptive title – up to 4 words"%>
+    <%= f.input :body, :input_html => { :class => "col-md-8", :style => "height: 250px;" }, :placeholder => "A marketing summary of the project"%>
     <%= f.input :created %>
     <%= f.input :public, :input_html => { :class => "form-inline" } %>
   </div>
