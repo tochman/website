@@ -30,13 +30,6 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
-Then(/^(?:|I )should see a navigation bar$/) do
-  expect(page).to have_css('div.navbar')
-end
-
-And(/^(?:|I )should see navigation links$/) do
-  expect(page).to have_css('ul.nav')
-end
 
 Then /^(?:|I )should see the "([^\"]*)" link$/ do |link|
   page.should(have_css("a", :text => link))
@@ -52,6 +45,10 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
+end
+
+When /^(?:|I )click "([^"]*)"$/ do |button|
+  click_link_or_button(button)
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|

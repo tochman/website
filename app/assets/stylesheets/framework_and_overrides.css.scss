@@ -7,6 +7,7 @@
 /* Padding below the footer and lighter body text */
 
 body {
+  margin-top: -20px;
   padding-bottom: 40px;
   color: #5a5a5a;
 }
@@ -45,7 +46,7 @@ body {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
   }
   .nav > li > a {
-    padding: 15px 20px;
+    padding: 18px 20px;
   }
   .btn-navbar {
     margin-top: 10px;
@@ -99,10 +100,14 @@ body {
   position: static;
   max-width: 550px;
   padding: 0 20px;
-  margin-top: 200px;
+  margin-top: 130px;
+  h1 {
+    font-size: 55px;
+  }
   h1, .lead {
     margin: 0;
-    line-height: 1.25;
+    margin-bottom: 40px;
+    line-height: 1.15;
     color: #fff;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   }

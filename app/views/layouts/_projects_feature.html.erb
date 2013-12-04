@@ -8,12 +8,12 @@
 
 </div-->
 
-<% @projects.each do |project| %>
+<% @features.each do |feature| %>
 
     <div class="featurette">
       <img class="featurette-image pull-left" src="<%= image_path('AV-avatar2.png') %>">
-      <h2 class="featurette-heading"><%= "#{project.title}" %>. <span class="muted">It'll blow your mind.</span></h2>
-      <p class="lead"><%= "#{project.body}" %></p>
+      <h2 class="featurette-heading"><%= "#{feature.title}" %>. <span class="muted">It'll blow your mind.</span></h2>
+      <p class="lead"><%= "#{feature.body}" %></p>
       <!--a class="btn btn-large btn-primary pull-left" href="#">Get involved!</a-->
     </div>
     <hr class="featurette-divider">

@@ -1,7 +1,7 @@
-<% content_for :title do %>Project contributors<% end %>
+<% content_for :title do %>The team<% end %>
 <section id="contributors">
-<h1>Project contributors</h1>
-<p>The development team behind this project:</p>
+<h2>The team</h2>
+<p>Agile Ventures team:</p>
 <ul class="media-list">
   <% @contributors[0...10].each  do |contributor| %>
       <li class="media">
@@ -11,7 +11,7 @@
         <div class="media-body">
           <h4 class="media-heading"><%= contributor['login'] %></h4>
           <a href="<%= contributor['html_url'] %>"> <%= contributor['html_url'] %></a>
-          <p class="media-heading"> <%= contributor['contributions'] %> contributions.</p>
+          <!--p class="media-heading"> <%= contributor['contributions'] %> contributions.</p-->
         </div>
       </li>
   <% end %>
