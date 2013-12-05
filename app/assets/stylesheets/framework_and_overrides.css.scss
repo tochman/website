@@ -29,7 +29,7 @@ body {
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
-  top: 0;
+  top: 20;
   left: 0;
   right: 0;
   z-index: 20;
@@ -82,6 +82,7 @@ body {
 
 .carousel  h1{
    font-size: 70px;
+  line-height: 70px;
 
 
 }
