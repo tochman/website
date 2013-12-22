@@ -1,9 +1,27 @@
 <h1>Registred Users</h1>
 
-<% @users.each do |user| %>
 
-    <%= user.first_name %>
-    <%= user.last_name %>
-    <%= link_to 'Show', "#{user.id}" %>
 
-<% end %>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+    <div class="col-sm-2 col-md-2">
+      <img src="http://thetransformedmale.files.wordpress.com/2011/06/bruce-wayne-armani.jpg"
+           alt="" class="img-rounded img-responsive" />
+    </div>
+    <div class="col-sm-4 col-md-4">
+      <blockquote>
+        <p><%= user.first_name %>
+          <%= user.last_name %></p> <small><cite title="Source Title">Gotham, United Kingdom  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+      </blockquote>
+      <p> <i class="glyphicon glyphicon-globe"></i> <%= user.organization %>
+        <br /> <i class="glyphicon glyphicon-envelope"></i> <%= user.email %>
+        <br /> <i class="glyphicon glyphicon-gift"></i> <%= link_to 'Show', "#{user.id}" %></p>
+    </div>
+    <% end %>
+  </div>
+</div>

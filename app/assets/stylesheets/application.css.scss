@@ -19,6 +19,7 @@ html, body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
+
 /* Wrapper for page content to push down footer */
 
 #wrap {
@@ -70,13 +71,19 @@ html, body {
 
 }
 
-.form-frame input[type=text],.form-frame input[type=email], .form-frame textarea {
+.form-frame input[type=text], .form-frame input[type=email], .form-frame textarea {
   background: rgb(235, 241, 245);
   color: rgb(36, 39, 41);
 }
+
 .form-frame  input:focus, .form-frame  textarea:focus {
   outline: 0;
   background: #FFF;
+}
+
+.glyphicon {
+  margin-bottom: 5px;
+  margin-right: 10px;
 }
 
 
