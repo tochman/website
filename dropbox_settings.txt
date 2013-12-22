@@ -1,0 +1,21 @@
+rake dropbox:authorize APP_KEY=chjxxbhpojosbt3 APP_SECRET=wlton1e4b7zwc7o ACCESS_TYPE=app_folder
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=mrHX2NoGoyZYbmhm
+And after you approved the authorization confirm it here (y/n): y
+
+Authorization was successful. Here you go:
+
+access_token: ihrfscnvk47fvvmt
+access_token_secret: qgxe1qmj6zaxeaf
+user_id: 52190197
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=FHDciDBfAcZUHazs
+And after you approved the authorization confirm it here (y/n): y
+
+Authorization was successful. Here you go:
+
+access_token: t9iznd2jdniaob89
+access_token_secret: fj8m1eg7u3v89zg
+user_id: 52190197
+
+
+
+App URL: https://www.dropbox.com/developers/apps/info/chjxxbhpojosbt3

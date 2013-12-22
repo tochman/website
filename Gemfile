@@ -16,6 +16,8 @@ gem 'devise'
 gem 'json'
 gem 'factory_girl_rails'
 gem 'carrierwave'
+gem 'carrierwave-dropbox'
+gem 'mini_magick'
 gem 'debugger'
 group :development do
   gem 'better_errors'

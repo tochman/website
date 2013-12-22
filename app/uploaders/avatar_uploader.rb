@@ -4,10 +4,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
+  process :resize_to_fit => [150, 150]
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -32,9 +33,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  #version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  version :mini do
+    process resize_to_fit: [15, 15]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
