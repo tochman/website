@@ -6,7 +6,9 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Website" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />
-
+    <!-- scripts should be @the bottom of page -->
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= yield(:scripts) %>
     <%= csrf_meta_tags %>
     <%=  yield(:head)%>
   </head>
@@ -36,9 +38,7 @@
       <div id="push"></div>
     </div>
         <%= render "layouts/footer" %>
-        <!-- scripts @the bottom of page -->
-        <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-        <%= yield(:scripts) %>
+
     </body>
 </html>
 

@@ -47,7 +47,9 @@ margin-top: -90px}
     padding-bottom: 0px;
     display: inline-block;
     margin: 0; }
-
+.section_header h2 {
+    font-size: 50px;
+}
 /* Footer
 -------------------------------------------------- */
 #footer {
