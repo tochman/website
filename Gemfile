@@ -16,6 +16,7 @@ gem 'devise'
 gem 'json'
 gem 'factory_girl_rails'
 gem 'carrierwave'
+gem 'debugger'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

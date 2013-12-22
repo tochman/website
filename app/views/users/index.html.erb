@@ -1,0 +1,9 @@
+<h1>Registred Users</h1>
+
+<% @users.each do |user| %>
+
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= link_to 'Show', "#{user.id}" %>
+
+<% end %>

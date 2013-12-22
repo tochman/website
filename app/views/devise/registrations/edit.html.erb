@@ -5,6 +5,8 @@
       <div class='col-12 form-frame'>
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
         <%= form_for(resource, :as => resource_name, :class => 'form-vertical', :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+            <div><%= f.label :avatar, 'Upload avatar' %><br />
+            <%= f.file_field :avatar %></div>
             <div><%= f.label :email %>
               <br/>
               <%= f.email_field :email, class: 'form-control', :autofocus => true %></div>
@@ -25,12 +27,13 @@
             <div><%= f.label :password_confirmation %> <br/>
               <%= f.password_field :password_confirmation, class: 'form-control' %></div>
             <div><%= f.label :current_password %>
-              <br/> <i>(we need your current password to confirm your changes)</i> <br/>
+              <i>(we need your current password to confirm your changes)</i> <br/>
               <%= f.password_field :current_password, class: 'form-control' %></div>
             <br/>
 
             <div><%= f.submit "Update", class: 'btn btn-primary btn-large btn-block' %></div>
         <% end %>
+        <hr>
         <h3>Cancel my account</h3>
 
         <p>Unhappy? We would hate to miss you as a friend...
