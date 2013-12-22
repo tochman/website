@@ -1,11 +1,11 @@
-<%= simple_form_for(@project, :html => { :class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@project, :html => { :class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title , :input_html => { :class => "col-md-4" }, :placeholder => "A short, descriptive title – up to 4 words"%>
-    <%= f.input :body, :input_html => { :class => "col-md-8", :style => "height: 250px;" }, :placeholder => "A marketing summary of the project"%>
+    <%= f.input :title , :input_html => { :class => "form-control" }, :placeholder => "A short, descriptive title – up to 4 words"%>
+    <%= f.input :body, :input_html => { :class => "form-control", :style => "height: 250px;" }, :placeholder => "A marketing summary of the project"%>
     <%= f.input :created %>
-    <%= f.input :public, :input_html => { :class => "form-inline" } %>
+    <%= f.input :public, :input_html => { :style => "display: inline !important;" } %>
   </div>
 
   <div class="form-actions">
