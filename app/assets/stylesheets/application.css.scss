@@ -86,5 +86,27 @@ html, body {
   margin-right: 10px;
 }
 
+/* Mini Avatar frame for navbar TODO: refactor this
+     -------------------------------------------------- */
+.mini-avatar-frame {
+  -webkit-border-radius: 1px 0 0 1px;
+  -moz-border-radius: 1px 0 0 1px;
+  -ms-border-radius: 1px 0 0 1px;
+  -o-border-radius: 1px 0 0 1px;
+  border-radius: 10px 0 0 1px;
+  border-color: white;
+  height: 38px;
+  width: 38px;
+  padding-left: 1px;
+  padding-right: 1px;
+  margin-right: 5px;
+}
+
+.mini-avatar {
+  display: inline-block;
+  max-height: 20px;
+  background-color: transparent;
+}
+
 
 

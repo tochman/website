@@ -34,7 +34,7 @@ include CarrierWave::MiniMagick
 
   # Create different versions of your uploaded files:
   version :mini do
-    process resize_to_fit: [15, 15]
+    process resize_to_fit: [25, 25]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
