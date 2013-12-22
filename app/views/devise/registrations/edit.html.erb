@@ -5,8 +5,12 @@
       <div class='col-12 form-frame'>
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
         <%= form_for(resource, :as => resource_name, :class => 'form-vertical', :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
-            <div><%= f.label :avatar, 'Upload avatar' %><br />
-            <%= f.file_field :avatar %></div>
+            <%  if @user.avatar.url.present? %>
+            <div class="form-frame">
+              <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive')  %>
+            <% end %>
+            <%= f.file_field :avatar, :placeholder => 'your avatar' %>
+            <%= f.hidden_field :avatar_cache %></div>
             <div><%= f.label :email %>
               <br/>
               <%= f.email_field :email, class: 'form-control', :autofocus => true %></div>
