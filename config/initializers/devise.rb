@@ -252,3 +252,13 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
+
+CarrierWave.configure do |config|
+  config.dropbox_app_key = ENV["chjxxbhpojosbt3"]
+  config.dropbox_app_secret = ENV["wlton1e4b7zwc7o"]
+  config.dropbox_access_token = ENV["1w7qsj3pbldusfru"]
+  config.dropbox_access_token_secret = ENV["6uqj6blceu3m5t8"]
+  config.dropbox_user_id = ENV["52190197"]
+  #config.dropbox_access_type = "app_folder"
+  config.dropbox_access_type = "dropbox"
+end

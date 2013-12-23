@@ -19,3 +19,11 @@ user_id: 52190197
 
 
 App URL: https://www.dropbox.com/developers/apps/info/chjxxbhpojosbt3
+
+rake dropbox:authorize APP_KEY=chjxxbhpojosbt3 APP_SECRET=wlton1e4b7zwc7o ACCESS_TYPE=dropbox
+
+Authorization was successful. Here you go:
+
+access_token: 1w7qsj3pbldusfru
+access_token_secret: 6uqj6blceu3m5t8
+user_id: 52190197

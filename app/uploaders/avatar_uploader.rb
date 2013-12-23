@@ -7,7 +7,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :dropbox
   process :resize_to_fit => [150, 150]
   # storage :fog
 
@@ -48,5 +48,6 @@ include CarrierWave::MiniMagick
   # def filename
   #   "something.jpg" if original_filename
   # end
+
 
 end

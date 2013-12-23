@@ -31,12 +31,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   def minis
-    if current_user.first_name.present?
-      @mini_name = ([current_user.first_name, ' ', current_user.last_name].join)
-    else
-      @mini_name = current_user.email
+    if current_user.present?
+      if current_user.first_name.present?
+        @mini_name = ([current_user.first_name, ' ', current_user.last_name].join)
+      else
+        @mini_name = current_user.email
+      end
+      @mini_avatar = current_user.avatar_url(:mini)
     end
-    @mini_avatar = current_user.avatar_url(:mini)
+
+
   end
 
 end
