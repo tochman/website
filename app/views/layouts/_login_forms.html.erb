@@ -51,8 +51,8 @@
       </li>
   <% else %>
       <li class="dropdown">
-        <a href="#" id="<%= current_user.first_name %>" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
-          <span class="mini-avatar-frame"> <%= image_tag current_user.avatar_url(:mini), :class=> 'mini-avatar'%></span> <%= current_user.first_name %>
+        <a href="#" id="<%= @mini_name %>" class="dropdown-toggle" data-toggle="dropdown" title="Some SEO stuff....">
+          <span class="mini-avatar-frame"> <%= image_tag @mini_avatar, :class=> 'mini-avatar'%></span> <%= @mini_name %>
           <b class="caret"></b>
         </a>
 

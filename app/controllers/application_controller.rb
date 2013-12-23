@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
-
+  before_action :minis
   protected
 
   def configure_devise_permitted_parameters
@@ -27,6 +27,16 @@ class ApplicationController < ActionController::Base
           |u| u.permit(registration_params)
       }
     end
+  end
+
+  before_filter :authenticate_user!
+  def minis
+    if current_user.first_name.present?
+      @mini_name = ([current_user.first_name, ' ', current_user.last_name].join)
+    else
+      @mini_name = current_user.email
+    end
+    @mini_avatar = current_user.avatar_url(:mini)
   end
 
 end
