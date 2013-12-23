@@ -331,6 +331,7 @@ DEPENDENCIES
   database_cleaner (= 1.0.1)
   debugger
   devise
+  dropbox-sdk (~> 1.6.3)
   execjs
   factory_girl_rails
   figaro
