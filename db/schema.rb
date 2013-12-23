@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20131222164411) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "organization"
