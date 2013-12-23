@@ -19,6 +19,7 @@ gem 'carrierwave-dropbox'
 gem 'mini_magick'
 gem 'debugger'
 gem 'dropbox-sdk', '~> 1.6.3'
+gem 'font-awesome-rails'
 group :production do
   gem 'pg'
   gem 'rails_12factor'

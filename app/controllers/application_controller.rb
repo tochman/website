@@ -39,8 +39,6 @@ class ApplicationController < ActionController::Base
       end
       @mini_avatar = current_user.avatar_url(:mini)
     end
-
-
   end
 
 end
