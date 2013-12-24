@@ -1,11 +1,22 @@
-<%= form_for([@subject, @booking]) do |f| %>
-  <p>
-    <%= f.label 'start_time', 'Start time' %>
-    <%= f.datetime_select :start_time, { minute_step: 15 } %>
-  </p>
-  <p>
-    <%= f.label 'length', 'Length of session in hours' %>
-    <%= f.number_field 'length', min: 1 %>
-  </p>
-  <%= f.submit 'Submit' %>
-<% end %> 
+<div class='row'>
+  <div class='col-sm-6'>
+
+    <%= form_for([@subject, @booking], :html => { :class => 'form-vertical' }) do |f| %>
+        <legend>Session for <%= @subject.name %></legend>
+        <div class='form-group'>
+          <%= f.label 'start_time', 'Start time' %>
+          <%= f.datetime_select :start_time, {minute_step: 15} %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label 'length', 'Length of session in hours' %>
+          <%= f.number_field 'length', min: 1 %>
+        </div>
+        <div class='form-group'>
+          <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
