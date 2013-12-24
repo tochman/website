@@ -44,7 +44,7 @@ class SubjectsController < ApplicationController
   private
 
     def subject_params
-      params.require(:subject).permit(:name, :delete)
+      params.require(:subject).permit(:name, :description, :group_url, :delete)
     end
 
 end

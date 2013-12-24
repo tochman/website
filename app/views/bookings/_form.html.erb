@@ -4,7 +4,7 @@
     <%= f.datetime_select :start_time, { minute_step: 15 } %>
   </p>
   <p>
-    <%= f.label 'length', 'Length of booking in hours' %>
+    <%= f.label 'length', 'Length of session in hours' %>
     <%= f.number_field 'length', min: 1 %>
   </p>
   <%= f.submit 'Submit' %>
