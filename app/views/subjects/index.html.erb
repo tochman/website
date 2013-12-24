@@ -20,8 +20,8 @@
           <td><strong><%= subject.name %></strong></td>
           <td><%= subject.description %></td>
           <td><%= subject.group_url %></td>
-          <td><%= link_to 'Add booking', new_subject_booking_path(subject) %></td>
-          <td><%= link_to 'Show all bookings', subject_bookings_path(subject) %></td>
+          <td><%= link_to 'Add session', new_subject_booking_path(subject) %></td>
+          <td><%= link_to 'Show all sessions', subject_bookings_path(subject) %></td>
           <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
           <td><%= link_to 'Delete', subject_path(subject), data: { confirm: 'Are you sure?' }, method: :delete %></td>
         </tr>

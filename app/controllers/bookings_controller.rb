@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   respond_to :html, :xml, :json
   
   before_action :find_subject
