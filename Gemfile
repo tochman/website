@@ -21,6 +21,7 @@ gem 'debugger'
 gem 'dropbox-sdk', '~> 1.6.3'
 gem 'font-awesome-rails'
 gem 'bookable', '~> 0.0.52'
+gem 'bootstrap-datepicker-rails'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
