@@ -1,0 +1,11 @@
+<h3>subjects</h3>
+
+<% @subjects.each do |subject| %>
+  <div class="subject">
+    <%= subject.name %>
+    <%= link_to "Show all bookings", subject_bookings_path(subject) %>
+    <%= link_to "Delete", subject_path(subject), data: { confirm: 'Are you sure?' }, method: :delete %>
+    <%= link_to "Edit", edit_subject_path(subject) %>
+    <%= link_to "Add booking", new_subject_booking_path(subject) %>
+  </div>
+<% end %>

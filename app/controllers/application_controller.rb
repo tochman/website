@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   def minis
     if current_user.present?
       if current_user.first_name.present?

@@ -1,0 +1,13 @@
+<% if @subject.errors.any? %>
+  <div class="errors">
+    <h3>
+      <%= pluralize(@subject.errors.count, 'error') %>
+      prohibited this subject from being saved:
+    </h3>
+    <ul>
+      <% @subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
