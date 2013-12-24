@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224090859) do
+ActiveRecord::Schema.define(version: 20131224231041) do
 
   create_table "bookings", force: true do |t|
     t.datetime "start_time"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 20131224090859) do
   end
 
   add_index "bookings", ["subject_id"], name: "index_bookings_on_subject_id"
+
+  create_table "comments", force: true do |t|
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -61,5 +75,14 @@ ActiveRecord::Schema.define(version: 20131224090859) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "yt_video_id"
+    t.boolean  "is_complete", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

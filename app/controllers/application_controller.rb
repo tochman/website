@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :minis
+  helper_method :yt_client
+
+
+  def yt_client
+    @yt_client ||= YouTubeIt::Client.new(:username => YouTubeITConfig.username , :password => YouTubeITConfig.password , :dev_key => YouTubeITConfig.dev_key)
+  end
   protected
 
   def configure_devise_permitted_parameters

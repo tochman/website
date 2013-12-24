@@ -1,4 +1,16 @@
 Website::Application.routes.draw do
+  resources :videos do
+    member do
+      post :add_comment
+    end
+    new do
+      post :upload
+      get  :save_video
+    end
+  end
+
+  get "videos/:id/add_comment", :to => "videos#add_comment"
+
   devise_for :users
 
   resources :subjects do
