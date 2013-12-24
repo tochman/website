@@ -13,26 +13,24 @@
         </button>
         <a class="navbar-brand" href="/"><img src="<%= image_path('av-logo-inverse.png') %>"></a>
       </div>
-        <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Home', root_path %><li>
-                <li class="dropdown-header">Nav header</li>
-                <%= render 'layouts/navigation_links' %>
+      <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Home', root_path %><li>
+          <li><%= link_to 'About', page_path('about') %></li>
+          <li><%= link_to 'The Team', users_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Pairing groups', subjects_path %></li>
 
-                <li><a href="#">Separated link</a></li>
-
-              </ul>
-            </li>
-          </ul>
-          <%= render'layouts/login_forms' %>
-        </div><!--/.nav-collapse -->
-      </div><!-- /.navbar-inner -->
-    </div><!-- /.navbar -->
-  </div> <!-- /.container -->
+        <%= render 'layouts/login_forms' %>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!-- /.navbar-inner -->
+  </div>
+  <!-- /.navbar -->
+</div> <!-- /.container -->
 </div><!-- /.navbar-wrapper -->
 <img src="">

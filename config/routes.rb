@@ -1,7 +1,12 @@
 Website::Application.routes.draw do
+  devise_for :users
+
+  resources :subjects do
+	  resources :bookings
+  end
   resources :projects
 
-  devise_for :users
+
   root :to => 'visitors#new'
   get 'users/:id' => 'users#show'
   get 'users/' => 'users#index'
