@@ -37,6 +37,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bookable (0.0.52)
+      jbuilder (~> 1.2)
+      rails_12factor
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
     builder (3.1.4)
@@ -322,6 +325,7 @@ DEPENDENCIES
   ZenTest
   better_errors
   binding_of_caller
+  bookable (~> 0.0.52)
   bootstrap-sass (~> 3.0.2.0)
   capybara (= 2.0.2)
   capybara-webkit (~> 1.0.0)

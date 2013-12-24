@@ -20,6 +20,7 @@ gem 'mini_magick'
 gem 'debugger'
 gem 'dropbox-sdk', '~> 1.6.3'
 gem 'font-awesome-rails'
+gem 'bookable', '~> 0.0.52'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
