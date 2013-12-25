@@ -11,14 +11,19 @@ class ApplicationController < ActionController::Base
 
 
   def yt_client
-    @yt_client ||= YouTubeIt::Client.new(:dev_key => YouTubeITConfig.dev_key)
+    @yt_client ||= YouTubeIt::Client.new(:username => YouTubeITConfig.username, :password => YouTubeITConfig.password, :dev_key => YouTubeITConfig.dev_key)
   end
 
   def videos_list
-    results = yt_client.videos_by(:user => 'aeurdstfaksf', :tags => ['hoa'])
+    client = YouTubeIt::Client.new(:username => "TOchman10@gmail.com", :password =>  "Oliver2013", :dev_key => "AI39si56zXaYYeIhrMack13lKTHuj95sOqfSHWkB2ASgI-XMH0PhI2hyl36vhS5zD2s85MkFhUBSObuNzeRBWfJn4ovqlqg5WA")
+    #playlist_id = "PLHz9AyfUoiO910iTpxCA7UR7a-EQvHztE"
+    #playlist = client.playlist(playlist_id)
+    #@videos_list = playlist.videos
+    @playlists = client.playlists('TNEWebcast')
+    #results = client.videos_by(:user => 'aeurdstfaksf', :tags =>{ :include => ['#hoa', '#Hangouts On Air', '#hangoutsonair']})
     #results = yt_client.videos_by(:tags => ['agile', 'ruby'])
-    #results = yt_client.videos_by(:tags => ['hoa', 'leopard'], :user => 'aeurdstfaksf')
-    @videos_list = results.videos
+    #results = yt_client.videos_by(:tags => ['hoa', 'leopard'], :user => 'aeurdstfaksf'|'TNEWebcast')
+    #@videos_list = results.videos
   end
 
   protected

@@ -2,7 +2,7 @@
 
   <table class="table table-striped">
     <thead>
-    <legend>Agaile Ventures Videos</legend>
+    <legend>Agile Ventures Videos</legend>
     <tr>
       <th style="width:90%"></th>
       <th style="width:15px"></th>
@@ -10,7 +10,8 @@
     </thead>
 
     <tbody>
-    <% @videos_list.each do |video| %>
+    <% @playlists.each do |list| %>
+        <% list.videos.each do |video| %>
         <tr>
           <td>
             <div class="media">
@@ -22,16 +23,20 @@
                 <h4 class="media-heading"><%= video.title %></h4>
 
                 <p><%= video.description %></p>
-                <p><small>Created: <%= video.published_at.to_formatted_s(:short) %>
+                <p><small>Added: <%= video.published_at.to_formatted_s(:short) %>
                 by: <%= video.author.name %></small></p>
               </div>
             </div>
           </td>
           <td><%= link_to 'View', video.media_content[0].url, :type => "button", :class => "btn btn-default btn-xs" %></td>
         </tr>
+        <% end %>
     <% end %>
     </tbody>
   </table>
+
+
+
 
 </section>
 
