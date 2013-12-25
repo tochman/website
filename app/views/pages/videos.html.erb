@@ -1,0 +1,39 @@
+<section id="videos">
+
+  <table class="table table-striped">
+    <thead>
+    <legend>Agaile Ventures Videos</legend>
+    <tr>
+      <th style="width:90%"></th>
+      <th style="width:15px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @videos_list.each do |video| %>
+        <tr>
+          <td>
+            <div class="media">
+              <a class="pull-left" href="<%= video.media_content[0].url %>">
+                <img class="media-object" src="<%= video.thumbnails[0].url %>" alt="...">
+              </a>
+
+              <div class="media-body">
+                <h4 class="media-heading"><%= video.title %></h4>
+
+                <p><%= video.description %></p>
+                <p><small>Created: <%= video.published_at.to_formatted_s(:short) %>
+                by: <%= video.author.name %></small></p>
+              </div>
+            </div>
+          </td>
+          <td><%= link_to 'View', video.media_content[0].url, :type => "button", :class => "btn btn-default btn-xs" %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</section>
+
+
+

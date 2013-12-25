@@ -6,12 +6,21 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :minis
+  before_action :videos_list
   helper_method :yt_client
 
 
   def yt_client
-    @yt_client ||= YouTubeIt::Client.new(:username => YouTubeITConfig.username , :password => YouTubeITConfig.password , :dev_key => YouTubeITConfig.dev_key)
+    @yt_client ||= YouTubeIt::Client.new(:dev_key => YouTubeITConfig.dev_key)
   end
+
+  def videos_list
+    results = yt_client.videos_by(:user => 'aeurdstfaksf', :tags => ['hoa'])
+    #results = yt_client.videos_by(:tags => ['agile', 'ruby'])
+    #results = yt_client.videos_by(:tags => ['hoa', 'leopard'], :user => 'aeurdstfaksf')
+    @videos_list = results.videos
+  end
+
   protected
 
   def configure_devise_permitted_parameters
@@ -35,7 +44,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #before_filter :authenticate_user!
   def minis
     if current_user.present?
       if current_user.first_name.present?
