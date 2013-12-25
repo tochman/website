@@ -1,46 +1,33 @@
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", videos_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_video_path %></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Videos</h2>
-    <div class="inner">
-      <table class="table">
-        <tr>
-          <th class="first">ID</th>
-          <th>
-            <%= t("activerecord.attributes.video.title", :default => t("activerecord.labels.title", :default => "Title")) %>
-          </th>
-          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
-          <th class="last">&nbsp;</th>
-        </tr>
-        <% @videos.each do |video| -%>
-            <tr class="<%= cycle("odd", "even") %>">
-              <td>
-                <%= video.title %>
-              </td>
-              <td>
-                <%= link_to video.video_id, video_path(video) %>
-              </td>
-              <td>
-                <%= video %>
-              </td>
-              <td class="last">
-                <%= link_to "#{t("web-app-theme.show", :default => "Show")}", video_path(video) %> |
-                <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_video_path(video) %> |
-                <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-              </td>
-            </tr>
-        <% end -%>
-      </table>
-      <div class="actions-bar wat-cf">
-        <div class="actions">
-        </div>
+<section id="videos">
 
-      </div>
-    </div>
-  </div>
-</div>
+  <table class="table table-striped">
+    <thead>
+    <legend>Videos</legend>
+    <tr>
+      <th style="width:15px"><%= t("activerecord.attributes.video.id") %></th>
+      <th style="width:90%"><%= t("activerecord.attributes.video.title") %></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @videos.each do |video| %>
+        <tr>
+          <td><strong><%= video.id %></strong></td>
+          <td><%= video.title %> (<%= video.created_at %>)</td>
+          <td><%= link_to 'View', video_path(video), :type=>"button", :class=>"btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Edit', edit_video_path(video), :type=>"button", :class=>"btn btn-warning btn-xs" %></td>
+          <td><%= link_to 'Delete', video_path(video), :type=>"button", :class=>"btn btn-danger btn-xs", data: { confirm: 'Are you sure?' }, method: :delete %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if user_signed_in? %>
+      <%= link_to "New video", new_video_path, :type => 'button', :class => "btn btn-primary" %>
+  <% end %>
+</section>
+

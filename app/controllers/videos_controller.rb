@@ -1,8 +1,9 @@
-class VideosController < ApplicationController
+class VideosController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
     @videos = Video.all
+
   end
 
   def upload

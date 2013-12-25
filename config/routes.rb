@@ -9,7 +9,7 @@ Website::Application.routes.draw do
     end
   end
 
-  get "videos/:id/add_comment", :to => "videos#add_comment"
+  #post "videos/:id/add_comment", :to => "videos#add_comment"
 
   devise_for :users
 

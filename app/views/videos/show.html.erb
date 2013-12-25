@@ -8,12 +8,12 @@
   </div>
   <div class="content">
     <div class="inner">
-
+      <h3><%= raw yt_client.video_by(@video.yt_video_id).title %></h3>
       <p>
-        <%= raw yt_client.my_video(@video.yt_video_id).embed_html %>
+        <%= raw yt_client.video_by(@video.yt_video_id).embed_html %>
       </p>
       <h3><%= @video.description %></h3>
-      <p><b>url:</b> <a href="http://www.youtube.com/watch?v=<%= @video.yt_video_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.yt_video_id %></a></p>
+      <%= link_to 'Watch on YouTube', (raw yt_client.video_by(@video.yt_video_id).player_url) %>
 
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_video_path(@video), :class => "button" %>
