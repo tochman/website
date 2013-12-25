@@ -1,0 +1,33 @@
+<section id="videos">
+
+  <table class="table table-striped">
+    <thead>
+    <legend>Videos</legend>
+    <tr>
+      <th style="width:15px"><%= t("activerecord.attributes.video.id") %></th>
+      <th style="width:90%"><%= t("activerecord.attributes.video.title") %></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @videos.each do |video| %>
+        <tr>
+          <td><strong><%= video.id %></strong></td>
+          <td><%= video.title %> (<%= video.created_at %>)</td>
+          <td><%= link_to 'View', video_path(video), :type=>"button", :class=>"btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Edit', edit_video_path(video), :type=>"button", :class=>"btn btn-warning btn-xs" %></td>
+          <td><%= link_to 'Delete', video_path(video), :type=>"button", :class=>"btn btn-danger btn-xs", data: { confirm: 'Are you sure?' }, method: :delete %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if user_signed_in? %>
+      <%= link_to "New video", new_video_path, :type => 'button', :class => "btn btn-primary" %>
+  <% end %>
+</section>
+
