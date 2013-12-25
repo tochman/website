@@ -1,6 +1,12 @@
-class VideosController < InheritedResources::Base
+class VideosController < ApplicationController
+  before_filter :authenticate_user!
+
+  def index
+    @videos = Video.all
+  end
+
   def upload
-    @video = Video.create(params[:video])
+    @video = Video.create(videos_params[:video])
     if @video
       @upload_info = Video.token_form(params[:video], save_video_new_video_url(:video_id => @video.id))
     else
@@ -12,7 +18,7 @@ class VideosController < InheritedResources::Base
 
   def update
     @video     = Video.find(params[:id])
-    @result    = Video.update_video(@video, params[:video])
+    @result    = Video.update_video(@video, videos_params)
     respond_to do |format|
       format.html do
         if @result
@@ -60,6 +66,12 @@ class VideosController < InheritedResources::Base
   protected
   def collection
     @videos ||= end_of_association_chain.completes
+  end
+
+  private
+
+  def videos_params
+    params.require(:video).permit(:title, :description, :yt_video_id, :is_complete)
   end
 
 end
