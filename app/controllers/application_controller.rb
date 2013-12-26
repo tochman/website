@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :minis
-  before_action :videos_list
+  before_action :videos_list, if: :high_voltage?
   helper_method :yt_client
 
 

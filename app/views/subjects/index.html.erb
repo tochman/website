@@ -1,7 +1,7 @@
 <section id="subjects">
   <table class="table table-striped">
     <thead>
-    <legend>Pairing subjects</legend>
+    <legend>Pairing groups</legend>
     <tr>
       <th style="width:500px">Group</th>
       <th style="width:100px"></th>
@@ -38,7 +38,7 @@
 
   <br>
   <% if user_signed_in? %>
-      <%= link_to "New Subject", new_subject_path, :type => 'button', :class => "btn btn-primary" %>
+      <%= link_to "New Group", new_subject_path, :type => 'button', :class => "btn btn-primary" %>
   <% end %>
 </section>
 
