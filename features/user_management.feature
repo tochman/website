@@ -15,6 +15,7 @@ Given the following users are registered:
 
 Scenario: Sign in for an existing user
   Given I sign in as "normal_user@example.com" with password "pppppppp"
+  Then show me the page
   Then I should see a link or button "normal_user@example.com"
 
 Scenario: Sign in with wrong password for an existing user

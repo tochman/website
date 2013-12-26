@@ -18,9 +18,11 @@ Dir["../../spec/factories/*.rb"].each {|file| require_relative file }
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
 
-Capybara.default_selector = :css
-
-Capybara.javascript_driver = :webkit
+Capybara.configure do |config|
+  config.run_server = true
+  config.default_driver = :webkit
+  config.javascript_driver = :webkit
+end
 
 WebMock.allow_net_connect!
 
