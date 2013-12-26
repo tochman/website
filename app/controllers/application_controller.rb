@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     @videos_list = results.videos
   end
 
+  #def after_sign_in_path_for(resource_or_scope)
+  #  subjects_path
+  #end
+
   protected
 
   def configure_devise_permitted_parameters

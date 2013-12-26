@@ -24,6 +24,7 @@ gem 'bookable', '~> 0.0.52'
 gem 'youtube_it'
 gem 'acts_as_commentable'
 gem 'inherited_resources'
+gem 'acts_as_follower'
 group :production do
   gem 'pg'
   gem 'rails_12factor'

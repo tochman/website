@@ -9,6 +9,13 @@ Website::Application.routes.draw do
     end
   end
 
+  resources :subjects do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
+
   #post "videos/:id/add_comment", :to => "videos#add_comment"
 
   devise_for :users

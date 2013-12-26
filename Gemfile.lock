@@ -27,6 +27,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     acts_as_commentable (4.0.1)
+    acts_as_follower (0.2.1)
     addressable (2.3.5)
     arel (4.0.1)
     arrayfields (4.9.0)
@@ -358,6 +359,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   acts_as_commentable
+  acts_as_follower
   better_errors
   binding_of_caller
   bookable (~> 0.0.52)
