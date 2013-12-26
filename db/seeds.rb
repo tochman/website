@@ -20,7 +20,7 @@ User.create({:email => 'user2@example.com',
              :password_confirmation => 'user4321',
              :first_name => 'Kalle',
              :last_name => 'Karlsson',
-             :avatar => open('app/assets/images/anonymous.jpg'),
+             :avatar => File.open('app/assets/images/anonymous.jpg'),
              :created_at => Date.today })
 
 
