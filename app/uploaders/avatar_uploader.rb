@@ -17,7 +17,7 @@ include CarrierWave::MiniMagick
 
 
   def default_url
-     "/images/" + [version_name, "anonymous.jpg"].compact.join('_')
+    'app/assets/images/anonymous.jpg'
   end
 
   def extension_white_list

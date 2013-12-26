@@ -13,12 +13,14 @@ User.create({:email => 'user1@example.com',
               :password_confirmation => 'user1234',
               :first_name => 'Anders',
               :last_name => 'Andersson',
+              :avatar => open('app/assets/images/anonymous.jpg'),
               :created_at => Date.today })
 User.create({:email => 'user2@example.com',
              :password => 'user4321',
              :password_confirmation => 'user4321',
              :first_name => 'Kalle',
              :last_name => 'Karlsson',
+             :avatar => open('app/assets/images/anonymous.jpg'),
              :created_at => Date.today })
 
 
