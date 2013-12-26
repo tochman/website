@@ -1,0 +1,25 @@
+
+<h2>
+  <%= @subject.name %>
+</h2>
+
+<p>
+  <strong>Description</strong>
+  <%= @subject.description %>
+</p>
+
+<p>
+  <strong>URL</strong>
+  <%= link_to @subject.group_url, "#" %>
+</p>
+
+<p>
+  <strong>Members</strong>
+  <% @subject.followers.each do |member| %>
+      <%= [member.first_name,' ', member.last_name].join  %>
+
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>

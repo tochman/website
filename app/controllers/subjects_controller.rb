@@ -38,7 +38,7 @@ class SubjectsController < ApplicationController
     @subject.update subject_params
     if @subject.save
       flash[:notice] = "Your subject was updated succesfully"
-      redirect_to root_path
+      redirect_to subject_path
     else
       render 'edit'
     end
