@@ -8,9 +8,13 @@ include CarrierWave::MiniMagick
   version :mini do
     process resize_to_fit: [25, 25]
   end
+
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    Rails.env.production? ? (primary_folder = "production") : (primary_folder = "test")
+    "#{primary_folder}/uploads/images/#{model.id}"
   end
+
 
   def default_url
      "/images/" + [version_name, "anonymous.jpg"].compact.join('_')
