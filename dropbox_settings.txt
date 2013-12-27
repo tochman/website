@@ -27,3 +27,26 @@ Authorization was successful. Here you go:
 access_token: 1w7qsj3pbldusfru
 access_token_secret: 6uqj6blceu3m5t8
 user_id: 52190197
+
+rake dropbox:authorize APP_KEY=uwjx9jwfwjikpev APP_SECRET=nwjzpc1l34lnd8g ACCESS_TYPE=app_folder
+
+App key uwjx9jwfwjikpev
+App secret nwjzpc1l34lnd8g
+
+website (master) $ rake dropbox:authorize APP_KEY=uwjx9jwfwjikpev APP_SECRET=nwjzpc1l34lnd8g ACCESS_TYPE=app_folder
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=JvEeoc3RyfI4zTzZ
+And after you approved the authorization confirm it here (y/n): y
+
+Authorization was successful. Here you go:
+
+access_token: zb785ls5kcyk5tw4
+access_token_secret: h4cs5ilhje0cw6y
+user_id: 52190197
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=GJooPkjh746gCaId
+And after you approved the authorization confirm it here (y/n): y
+
+Authorization was successful. Here you go:
+
+access_token: 93b95di22hvuydkc
+access_token_secret: wow280fvzra1rhj
+user_id: 52190197
