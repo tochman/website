@@ -4,13 +4,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
 include CarrierWave::MiniMagick
 
 
-  storage :dropbox
   process :resize_to_fit => [150, 150]
   process :gif_to_jpg_convert
   process :convert => 'jpg'
   version :mini do
     process resize_to_fit: [25, 25]
   end
+  storage :dropbox
 
   def gif_to_jpg_convert
     image = MiniMagick::Image.open(current_path)
@@ -24,7 +24,9 @@ include CarrierWave::MiniMagick
 
   def store_dir
     Rails.env.production? ? (primary_folder = "production") : (primary_folder = "test")
-    "#{primary_folder}/uploads/images/#{model.id}"
+    #"#{primary_folder}/uploads/images/#{model.id}"
+    "/#{primary_folder}/#{model.class.to_s.underscore}/#{model.id}"
+
   end
 
   #def url(*args)
@@ -34,6 +36,8 @@ include CarrierWave::MiniMagick
 
 
   def default_url
+   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "anonymous_avatar.gif"].compact.join('_'))
+
     'anonymous_avatar.gif'
      #"/images/" + [version_name, "anonymous.jpg"].compact.join('_')
   end

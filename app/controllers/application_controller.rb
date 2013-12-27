@@ -51,11 +51,11 @@ class ApplicationController < ActionController::Base
   def minis
     if current_user.present?
       if current_user.first_name.present?
-        @mini_name = ([current_user.first_name, ' ', current_user.last_name].join)
+        @mini_name = ([current_user.first_name, current_user.last_name].join(' '))
       else
         @mini_name = current_user.email
       end
-      @mini_avatar = current_user.avatar_url(:mini)
+      @mini_avatar = current_user.avatar_url(:mini) if current_user.avatar.present?
     end
   end
 
