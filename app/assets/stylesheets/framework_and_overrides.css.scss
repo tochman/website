@@ -242,3 +242,40 @@ body {
   }
 
 }
+
+#navbutton  {
+  margin: 18px 15px 0px 0px !important;
+  padding: 1px 7px 1px 7px;
+}
+
+/* BOOKING */
+
+*{
+  font-family: Helvetica;
+}
+
+.wrapper {
+  width:60%;
+  border:1px solid gray;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.bookings_table input[type="number"] {
+  width:30px;
+}
+
+.bookings_table{
+  font-size: 14px;
+  color: gray;
+}
+
+.errors {
+  color:#c00;
+}
+
+.calendar_container {
+  margin: auto;
+  width: 80%;
+}
