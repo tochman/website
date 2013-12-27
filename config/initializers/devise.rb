@@ -234,7 +234,7 @@ Devise.setup do |config|
   config.omniauth :facebook, '142329775805673', 'e5243942e48b63f90551830e97a55f3c', { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   #config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   config.omniauth :google_oauth2, '463111787485-8gegud3u8f1jjh962k3pvoveqi4ctnoq.apps.googleusercontent.com', '4pQGL8FbNBnp0dWoDrhELA7b', {}
-  config.omniauth :dropbox, 'chjxxbhpojosbt3', 'wlton1e4b7zwc7o'
+  #config.omniauth :dropbox, 'chjxxbhpojosbt3', 'wlton1e4b7zwc7o'
   #config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   #config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"], { :scope => 'r_fullprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   #config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user, public_repo"

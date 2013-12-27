@@ -1,13 +1,17 @@
 <section id="devise">
   <div class='row'>
-    <div class="container">
+    <div class="container form-frame">
       <%= devise_error_messages! %>
-      <div class='col-12 form-frame'>
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <div>
+        <h2>Editera <%= resource_name.to_s.humanize %></h2>
         <%= form_for(resource, :as => resource_name, :class => 'form-vertical', :url => registration_path(resource_name), :multipart => true, :html => {:method => :put}) do |f| %>
             <%  if @user.avatar.url.present? %>
             <div>
-              <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive')  %>
+              <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive') if @user.avatar?  %>
+              <label>
+                <%= f.check_box :remove_avatar %>
+                Remove avatar
+              </label>
             <% end %>
             <%= f.file_field :avatar, :class => 'fileinput', :placeholder => 'your avatar' %>
             <%= f.hidden_field :avatar_cache %></div>
