@@ -73,6 +73,7 @@ module CarrierWave
         @config[:access_token] = "t9iznd2jdniaob89"
         @config[:access_token_secret] = "fj8m1eg7u3v89zg"
         @config[:access_type] = "app_folder"
+        #@config[:access_type] = "dropbox"
         @config[:user_id] = "52190197"
 
         @config
