@@ -28,6 +28,7 @@ gem 'acts_as_follower'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 group :development do
   gem 'better_errors'
