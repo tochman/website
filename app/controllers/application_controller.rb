@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :minis
   before_action :videos_list
-  helper_method :yt_client
+  helper_method :yt_client, :minis
 
 
   def yt_client
@@ -60,6 +60,8 @@ class ApplicationController < ActionController::Base
       end
       @mini_avatar = current_user.avatar_url(:mini) if current_user.avatar.present?
     end
+  rescue
+    @mini_avatar = 'anonymous_avatar.gif'
   end
 
 
