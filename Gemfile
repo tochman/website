@@ -45,7 +45,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'execjs'
   gem 'rack_session_access'
-  gem 'simplecov', :require => false
 end
 group :test do
   gem 'cucumber-rails', :require => false
@@ -55,7 +54,6 @@ group :test do
   gem 'capybara', '2.0.2'
   gem 'capybara-webkit', '~> 1.0.0'
   gem 'webrat'
-  gem 'factory_girl_rails', :require => false
   gem 'webmock'
   gem 'uri-handler'
   gem 'selenium'
