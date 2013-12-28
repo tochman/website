@@ -49,10 +49,6 @@ module CarrierWave
         dropbox_client.put_file(location, file.to_file)
       end
 
-      # Retrieve a single file
-      def retrieve!(file)
-        CarrierWave::Storage::Dropbox::File.new(uploader, config, uploader.store_path(file), dropbox_client)
-      end
 
       private
 
