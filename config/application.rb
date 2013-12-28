@@ -46,7 +46,6 @@ module CarrierWave
       def store!(file)
         location = uploader.store_path
         location = "/Public/#{location}" if config[:access_type] == "dropbox"
-
         dropbox_client.put_file(location, file.to_file)
       end
 
@@ -70,9 +69,10 @@ module CarrierWave
 
         @config[:app_key] = "chjxxbhpojosbt3"
         @config[:app_secret] = "wlton1e4b7zwc7o"
-        @config[:access_token] = "t9iznd2jdniaob89"
-        @config[:access_token_secret] = "fj8m1eg7u3v89zg"
+        @config[:access_token] = "ihrfscnvk47fvvmt"
+        @config[:access_token_secret] = "qgxe1qmj6zaxeaf"
         @config[:access_type] = "app_folder"
+        #@config[:access_type] = "dropbox"
         @config[:user_id] = "52190197"
 
         @config

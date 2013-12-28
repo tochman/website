@@ -1,6 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  require 'omniauth-google-oauth2'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -30,6 +31,8 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
+  config.sign_out_via = :get
+
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -228,6 +231,13 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :facebook, '142329775805673', 'e5243942e48b63f90551830e97a55f3c', { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], { :scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :google_oauth2, '463111787485-8gegud3u8f1jjh962k3pvoveqi4ctnoq.apps.googleusercontent.com', '4pQGL8FbNBnp0dWoDrhELA7b', {}
+  #config.omniauth :dropbox, 'chjxxbhpojosbt3', 'wlton1e4b7zwc7o'
+  #config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"], { :scope => 'r_fullprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :github, '3d335e9c8e137c718080', 'f451b53003af7c09eebaeb0eea0612e62006c52e', scope: "user, public_repo"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -253,12 +263,3 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
 
-CarrierWave.configure do |config|
-  config.dropbox_app_key = ENV["chjxxbhpojosbt3"]
-  config.dropbox_app_secret = ENV["wlton1e4b7zwc7o"]
-  config.dropbox_access_token = ENV["1w7qsj3pbldusfru"]
-  config.dropbox_access_token_secret = ENV["6uqj6blceu3m5t8"]
-  config.dropbox_user_id = ENV["52190197"]
-  #config.dropbox_access_type = "app_folder"
-  config.dropbox_access_type = "dropbox"
-end

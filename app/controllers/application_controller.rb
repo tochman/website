@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -21,8 +22,10 @@ class ApplicationController < ActionController::Base
     @videos_list = results.videos
   end
 
+  #private
+  #
   #def after_sign_in_path_for(resource_or_scope)
-  #  subjects_path
+  #  redirect_to root_path
   #end
 
   protected
@@ -58,5 +61,7 @@ class ApplicationController < ActionController::Base
       @mini_avatar = current_user.avatar_url(:mini) if current_user.avatar.present?
     end
   end
+
+
 
 end

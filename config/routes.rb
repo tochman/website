@@ -18,7 +18,9 @@ Website::Application.routes.draw do
 
   #post "videos/:id/add_comment", :to => "videos#add_comment"
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+
+  resources :users
 
   resources :subjects do
 	  resources :bookings
@@ -29,6 +31,8 @@ Website::Application.routes.draw do
   root :to => 'visitors#new'
   get 'users/:id' => 'users#show'
   get 'users/' => 'users#index'
+  #get 'users/edit' => 'users#edit'
+  #get "/signup"   => "users/registrations#new",   :as => :new_user_registration
   get '/contributors', :to => 'contributors#index'
   get '/404', :to => 'errors#not_found'
   get '/422', :to => 'errors#server_error'

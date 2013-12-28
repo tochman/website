@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20131227140939) do
 
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+  end
+
   create_table "bookings", force: true do |t|
     t.datetime "start_time"
     t.datetime "end_time"
@@ -83,9 +94,13 @@ ActiveRecord::Schema.define(version: 20131227140939) do
     t.string   "last_name"
     t.string   "organization"
     t.boolean  "admin",                  default: false
+    t.string   "location"
+    t.string   "authentication_token"
+    t.string   "username"
     t.string   "avatar"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

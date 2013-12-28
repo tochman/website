@@ -21,10 +21,12 @@
             <%= link_to subject.group_url, "#" %></td>
           <td>Members: <%= subject.followers_count %></td>
           <td id="follow_subject_<%= subject.id %>">
+            <% if user_signed_in? %>
             <% if current_user.following?(subject) %>
                 <%= link_to 'Leave group', unfollow_subject_path(subject), :type => "button", :class => 'btn btn-danger btn-xs' %>
             <% else %>
                 <%= link_to 'Join group', follow_subject_path(subject), :type => "button", :class => 'btn btn-success btn-xs' %>
+            <% end %>
             <% end %>
           </td>
           <td><%= link_to 'Show sessions', subject_bookings_path(subject), :type => "button", :class => "btn btn-default btn-xs" %></td>

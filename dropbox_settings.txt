@@ -20,33 +20,35 @@ user_id: 52190197
 
 App URL: https://www.dropbox.com/developers/apps/info/chjxxbhpojosbt3
 
-rake dropbox:authorize APP_KEY=chjxxbhpojosbt3 APP_SECRET=wlton1e4b7zwc7o ACCESS_TYPE=dropbox
-
 Authorization was successful. Here you go:
 
-access_token: 1w7qsj3pbldusfru
-access_token_secret: 6uqj6blceu3m5t8
+access_token: 49grsjqrps777363
+access_token_secret: i2si7ecb74au014
 user_id: 52190197
-
-rake dropbox:authorize APP_KEY=uwjx9jwfwjikpev APP_SECRET=nwjzpc1l34lnd8g ACCESS_TYPE=app_folder
-
-App key uwjx9jwfwjikpev
-App secret nwjzpc1l34lnd8g
-
-website (master) $ rake dropbox:authorize APP_KEY=uwjx9jwfwjikpev APP_SECRET=nwjzpc1l34lnd8g ACCESS_TYPE=app_folder
-Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=JvEeoc3RyfI4zTzZ
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=QMnMFXyQJvKZXe3w
 And after you approved the authorization confirm it here (y/n): y
 
 Authorization was successful. Here you go:
 
-access_token: zb785ls5kcyk5tw4
-access_token_secret: h4cs5ilhje0cw6y
+access_token: liw4q9e8n4ze6b1c
+access_token_secret: 4g5b7wlordvke3y
 user_id: 52190197
-Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=GJooPkjh746gCaId
+
+
+
+ AVStorage
+rake dropbox:authorize APP_KEY=s8m1n7euj7qkp7u APP_SECRET=upoudr6ozybg1ud ACCESS_TYPE=dropbox
+
+Authorization was successful. Here you go:
+
+access_token: 44jok4n38xiupmat
+access_token_secret: rv89pvp5hxrdvp1
+user_id: 52190197
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=54sU2wjKCGkXS68Q
 And after you approved the authorization confirm it here (y/n): y
 
 Authorization was successful. Here you go:
 
-access_token: 93b95di22hvuydkc
-access_token_secret: wow280fvzra1rhj
+access_token: mv0q6t8c1cw87gyv
+access_token_secret: 854nuuv9gz4rjvk
 user_id: 52190197
