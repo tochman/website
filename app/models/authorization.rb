@@ -16,6 +16,8 @@ class Authorization < ActiveRecord::Base
     self.username = facebook_data['username']
     self.save
     self.user.username = facebook_data['username'] if self.user.username.blank?
+    self.user.first_name = facebook_data['first_name'] #if self.user.first_name.blank?
+    self.user.last_name = facebook_data['last_name'] #if self.user.last_name.blank?
     self.user.remote_avatar_url = "http://graph.facebook.com/" + self.username + "/picture?type=large" if self.user.avatar.blank?
     self.user.location = facebook_data['location'].values.second.to_s if self.user.location.blank?
     self.user.save
@@ -39,16 +41,8 @@ class Authorization < ActiveRecord::Base
   def fetch_details_from_github
   end
 
-
-  def fetch_details_from_linkedin
-
-  end
-
   def fetch_details_from_google_oauth2
 
   end
 
-  def fetch_details_from_dropbox
-
-  end
 end

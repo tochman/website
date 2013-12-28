@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # GET /users/1/edit
+  def edit
+  end
+
+
+
   # GET /users
   def index
     @users = User.all
@@ -45,6 +51,7 @@ class UsersController < ApplicationController
       sign_in user, store: false
     end
   end
+
 
 
 end

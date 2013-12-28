@@ -66,7 +66,7 @@ end
 #Omniauth gems
 gem 'omniauth'
 gem 'omniauth-facebook'
-#gem 'omniauth-github'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 #gem 'omniauth-dropbox'
 #gem 'omniauth-linkedin'

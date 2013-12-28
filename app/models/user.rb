@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   #validates_presence_of   :avatar
   #validates_integrity_of  :avatar
   #validates_processing_of :avatar
+
   def self.new_with_session(params,session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"],without_protection: true) do |user|

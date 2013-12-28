@@ -3,7 +3,7 @@
     <div class="container form-frame">
       <%= devise_error_messages! %>
       <div>
-        <h2>Editera <%= resource_name.to_s.humanize %></h2>
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
         <%= form_for(resource, :as => resource_name, :class => 'form-vertical', :url => registration_path(resource_name), :multipart => true, :html => {:method => :put}) do |f| %>
             <%  if @user.avatar.url.present? %>
             <div>

@@ -237,7 +237,7 @@ Devise.setup do |config|
   #config.omniauth :dropbox, 'chjxxbhpojosbt3', 'wlton1e4b7zwc7o'
   #config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   #config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"], { :scope => 'r_fullprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-  #config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user, public_repo"
+  config.omniauth :github, '3d335e9c8e137c718080', 'f451b53003af7c09eebaeb0eea0612e62006c52e', scope: "user, public_repo"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

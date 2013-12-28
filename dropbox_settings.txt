@@ -20,11 +20,20 @@ user_id: 52190197
 
 App URL: https://www.dropbox.com/developers/apps/info/chjxxbhpojosbt3
 
-rake dropbox:authorize APP_KEY=chjxxbhpojosbt3 APP_SECRET=wlton1e4b7zwc7o ACCESS_TYPE=dropbox
+Authorization was successful. Here you go:
 
-access_token: w2sadee764ihwj0a
-access_token_secret: 5zidswt2ragp2b6
+access_token: 49grsjqrps777363
+access_token_secret: i2si7ecb74au014
 user_id: 52190197
+Visit this URL: https://www.dropbox.com/1/oauth/authorize?oauth_token=QMnMFXyQJvKZXe3w
+And after you approved the authorization confirm it here (y/n): y
+
+Authorization was successful. Here you go:
+
+access_token: liw4q9e8n4ze6b1c
+access_token_secret: 4g5b7wlordvke3y
+user_id: 52190197
+
 
 
  AVStorage
