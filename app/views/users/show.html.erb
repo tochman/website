@@ -3,11 +3,12 @@
     <div class="container">
       <div class='col-12 form-frame'>
         <h2>User Profile</h2>
+        <% if @mini_avatar == !'anonymous_avatar.gif' %>
             <%  if @user.avatar.url.present? %>
                 <div>
                   <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive')  %>
             <% end %>
-
+        <% end %>
             <div><h3><%= @user.first_name %>
             <%= @user.last_name %></h3></div>
             <div><%= @user.email %></div>
