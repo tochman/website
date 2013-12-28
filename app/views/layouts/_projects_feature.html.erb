@@ -4,12 +4,12 @@
   <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 </div>
 <% @repos.each do |repo| %>
-    <div class="featurette">
+    <div class="featurette col-lg-8">
       <img class="featurette-image pull-<%= cycle('left', 'right') %>" src="<%= image_path('AV-avatar2.png') %>">
-      <h2 class="featurette-heading"><%= "#{repo['name']}" %>. <!--span class="muted">It'll blow your mind.</span--></h2>
+      <h2 class="featurette-heading"><%= "#{repo['name'].titleize}" %>. <!--span class="muted">It'll blow your mind.</span--></h2>
       <a href="<%= "#{repo['html_url']}" %>" target="_blank">View code on GitHub</a>
       <p class="lead"><%= "#{repo['description']}" %></p>
     </div>
-    <hr class="featurette-divider">
+    <!--hr class="featurette-divider"-->
 <% end %>
 
