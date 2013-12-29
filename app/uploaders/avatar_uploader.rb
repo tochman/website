@@ -20,6 +20,7 @@ include CarrierWave::MiniMagick
       File.write("public/#{store_dir}/gif_preview.jpg", "") #"touch" file
       image.write "public/#{store_dir}/gif_preview.jpg"
     end
+    end
   end
 
   def store_dir
@@ -49,5 +50,5 @@ include CarrierWave::MiniMagick
   def filename
      "avatar-#{model.id}.jpg" if original_filename
   end
-  end
+
 end
