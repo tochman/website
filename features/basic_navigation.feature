@@ -22,13 +22,13 @@ Examples:
   | Agile Videos   |
   | Pairing groups |
 
-Scenario: Test if the pulldown is present and contains login form
-  Given I click on "navLogin" link
-  Then I should see a login in form
-  #id = "loginForm"
-  And I should see "username" field
-  And I should see "password" field
-  And I should see "Sign in" button
+Scenario: Test if the pulldown is present and contains login form with all the right elements
+  Then I should not see form "loginForm"
+  When I click on "Check-in" link
+  Then I should see form "loginForm"
+  And I should see input "user_email"
+  And I should see input "user_password"
+  And I should see input "signin"
 
 
 

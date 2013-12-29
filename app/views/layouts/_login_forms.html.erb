@@ -1,6 +1,6 @@
 <% unless user_signed_in? %>
     <li class="dropdown " id="menuLogin">
-      <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Check in</a>
+      <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Check-in</a>
 
       <div class="dropdown-menu col-md-2" id="login" style="padding:20px 20px 20px 10px; width: 300px;">
         <%= form_for(resource, :class => "collapse", :html => {:id => "loginForm"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>

@@ -181,12 +181,22 @@ When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string
 end
 When(/^I should see the (.*) link$/) do |link|
-  page.should have_link link
+  page.should have_link /\A#{link}\Z/
 end
 Given(/^I click on "([^"]*)" link$/) do |link|
- # within ('#navLogin') do
-    #click_link link
-    click_link ("##{link}")
-  #end
+  within ('.navbar') do
+    find('a', :text => /\A#{link}\Z/).click
+  end
+  end
+Then(/^I should see input "([^"]*)"$/) do |input|
+  within ('#loginForm') do
+    find("input##{input}")
+  end
+end
+Then(/^I should see form "([^"]*)"$/) do |id|
+  page.should have_css("##{id}", :visible => true)
+end
 
+Then(/^I should not see form "([^"]*)"$/) do |id|
+  page.should have_css("##{id}", :visible => false)
 end
