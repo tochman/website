@@ -7,10 +7,12 @@ include CarrierWave::MiniMagick
   process :resize_to_fit => [150, 150]
   process :gif_to_jpg_convert
   process :convert => 'jpg'
+
   version :mini do
     process resize_to_fit: [25, 25]
   end
-  storage :dropbox
+
+  storage :aws
 
   def gif_to_jpg_convert
     image = MiniMagick::Image.open(current_path)
@@ -19,6 +21,8 @@ include CarrierWave::MiniMagick
       image.format "jpg"
       File.write("public/#{store_dir}/gif_preview.jpg", "") #"touch" file
       image.write "public/#{store_dir}/gif_preview.jpg"
+    end
+
     end
   end
 
@@ -49,5 +53,5 @@ include CarrierWave::MiniMagick
   def filename
      "avatar-#{model.id}.jpg" if original_filename
   end
-  end
+
 end

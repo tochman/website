@@ -33,29 +33,4 @@ module Website
   end
 end
 
-require 'dropbox_sdk'
-
-module CarrierWave
-  module Storage
-    class Dropbox < Abstract
-
-      private
-
-      def config
-        @config ||= {}
-
-        @config[:app_key] = "chjxxbhpojosbt3"
-        @config[:app_secret] = "wlton1e4b7zwc7o"
-        @config[:access_token] = "ihrfscnvk47fvvmt"
-        @config[:access_token_secret] = "qgxe1qmj6zaxeaf"
-        @config[:access_type] = "app_folder"
-        #@config[:access_type] = "dropbox"
-        @config[:user_id] = "52190197"
-
-        @config
-      end
-
-    end
-  end
-end
 
