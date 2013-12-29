@@ -1,0 +1,86 @@
+class DocumentsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  respond_to :html, :xml, :json
+
+  before_action :find_project
+
+  def index
+    #TODO: Set .order?
+    @documents = Document.find_by_id(@project)
+    respond_with @document
+  end
+
+  def new
+    @document = Document.new(project_id: @project.id)
+  end
+
+  def create
+    @document =  Document.new(params[:document].permit(:project_id))
+    @document.project = @project
+    if @document.save
+      redirect_to project_document_path(@project, method: :get)
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @document = Document.find(params[:id])
+  end
+
+  def destroy
+    @document = Document.find(params[:id]).destroy
+    if @document.destroy
+      flash[:notice] = "Document deleted"
+      redirect_to project_document_path(@project)
+    else
+      render 'index'
+    end
+  end
+
+  def edit
+    @document = Document.find(params[:id])
+  end
+
+  def update
+    @document = Document.find(params[:id])
+
+    if @document.update(params[:document].permit(:project_id))
+      flash[:notice] = 'Your document was updated succesfully'
+
+      if request.xhr?
+        render json: {status: :success}.to_json
+      else
+        redirect_to project_document_path(@project)
+      end
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def save document
+    if @document.save
+      flash[:notice] = 'Document has been added'
+      redirect_to project_document_path(@project, @document)
+    else
+      render 'new'
+    end
+  end
+
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def find_project
+    if params[:subject_id]
+      @project = Project.find_by_id(params[:project_id])
+    end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def document_params
+    params.require(:document).permit(:title, :body, :public)
+  end
+end
+

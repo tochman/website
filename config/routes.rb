@@ -25,7 +25,10 @@ Website::Application.routes.draw do
   resources :subjects do
 	  resources :bookings
   end
-  resources :projects
+
+  resources :projects do
+    resources :documents
+  end
 
 
   root :to => 'visitors#new'
