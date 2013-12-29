@@ -150,15 +150,17 @@ describe SubjectsController do
   end
 
   describe 'GET #show' do
+    before :each do 
+      @subject = create(:subject)
+    end
+    
     it 'assigns the requested subject to @subject' do
-      sub = create(:subject)
-      get :show, id: sub
-      expect(assigns(:subject)).to eq sub
+      get :show, id: @subject
+      expect(assigns(:subject)).to eq @subject
     end
 
     it 'renders the :show template' do
-      sub = create(:subject)
-      get :show, id: sub
+      get :show, id: @subject
       expect(response).to render_template :show
     end
   end
