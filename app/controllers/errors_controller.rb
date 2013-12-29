@@ -10,7 +10,11 @@ class ErrorsController < ApplicationController
   end
 
   def server_error
-    render :status => 500, :formats => [:html]
+    #render :status => 500, :formats => [:html]
+    respond_to do |format|
+      format.html { render template: 'errors/server_error', layout: 'layouts/application', status: 500 }
+      format.all  { render nothing: true, status: 500 }
+    end
   end
 
   def the_exception
