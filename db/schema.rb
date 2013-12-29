@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222164411) do
+ActiveRecord::Schema.define(version: 20131227140939) do
+
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+  end
+
+  create_table "bookings", force: true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "length"
+    t.integer  "subject_id"
+    t.text     "description"
+    t.string   "url"
+  end
+
+  add_index "bookings", ["subject_id"], name: "index_bookings_on_subject_id"
+
+  create_table "comments", force: true do |t|
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "follows", force: true do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -20,6 +69,12 @@ ActiveRecord::Schema.define(version: 20131222164411) do
     t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "subjects", force: true do |t|
+    t.string "name"
+    t.text   "description"
+    t.string "group_url"
   end
 
   create_table "users", force: true do |t|
@@ -39,9 +94,23 @@ ActiveRecord::Schema.define(version: 20131222164411) do
     t.string   "last_name"
     t.string   "organization"
     t.boolean  "admin",                  default: false
+    t.string   "location"
+    t.string   "authentication_token"
+    t.string   "username"
+    t.string   "avatar"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "yt_video_id"
+    t.boolean  "is_complete", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

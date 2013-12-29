@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
+gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -15,12 +16,20 @@ gem 'devise'
 gem 'json'
 gem 'factory_girl_rails'
 gem 'carrierwave'
-gem 'carrierwave-dropbox'
+#gem 'carrierwave-dropbox'
+gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'debugger'
+#gem 'dropbox-sdk', '~> 1.6.3'
+gem 'font-awesome-rails'
+gem 'bookable', '~> 0.0.52'
+gem 'youtube_it'
+gem 'acts_as_commentable'
+gem 'inherited_resources'
+gem 'acts_as_follower'
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 group :development do
   gem 'better_errors'
@@ -30,7 +39,6 @@ group :development do
   gem 'rails_layout'
 end
 group :development, :test do
-  gem 'sqlite3'
   gem 'metric_fu'
   gem 'database_cleaner', '1.0.1'
   gem 'launchy'
@@ -38,7 +46,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'execjs'
   gem 'rack_session_access'
-  gem 'simplecov', :require => false
 end
 group :test do
   gem 'cucumber-rails', :require => false
@@ -48,9 +55,24 @@ group :test do
   gem 'capybara', '2.0.2'
   gem 'capybara-webkit', '~> 1.0.0'
   gem 'webrat'
-  gem 'factory_girl_rails', :require => false
   gem 'webmock'
   gem 'uri-handler'
   gem 'selenium'
   gem 'selenium-client'
 end
+
+#Omniauth gems
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+#gem 'omniauth-dropbox'
+#gem 'omniauth-linkedin'
+#gem 'omniauth-twitter'
+
+gem 'koala'
+
+
+#social gems
+#gem 'linkedin'
+#gem 'twitter'

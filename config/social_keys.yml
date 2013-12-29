@@ -1,0 +1,37 @@
+development:
+  facebook_key: "142329775805673"
+  facebook_secret: "e5243942e48b63f90551830e97a55f3c"
+
+  twitter_key: "Enter your keys here. Check Read me file to know how to get keys"
+  twitter_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  github_key: "Enter your keys here. Check Read me file to know how to get keys"
+  github_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  linkedin_key: "Enter your keys here. Check Read me file to know how to get keys"
+  linkedin_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  google_key: "463111787485-8gegud3u8f1jjh962k3pvoveqi4ctnoq.apps.googleusercontent.com"
+  google_secret: "4pQGL8FbNBnp0dWoDrhELA7b"
+
+  dropbox_key: "chjxxbhpojosbt3"
+  dropbox_secret: "wlton1e4b7zwc7o"
+
+production:
+  facebook_key: "142329775805673"
+  facebook_secret: "e5243942e48b63f90551830e97a55f3c"
+
+  twitter_key: "Enter your keys here. Check Read me file to know how to get keys"
+  twitter_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  github_key: "Enter your keys here. Check Read me file to know how to get keys"
+  github_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  linkedin_key: "Enter your keys here. Check Read me file to know how to get keys"
+  linkedin_secret: "Enter your keys here. Check Read me file to know how to get keys"
+
+  google_key: "463111787485-8gegud3u8f1jjh962k3pvoveqi4ctnoq.apps.googleusercontent.com"
+  google_secret: "4pQGL8FbNBnp0dWoDrhELA7b"
+
+  dropbox_key: "chjxxbhpojosbt3"
+  dropbox_secret: "wlton1e4b7zwc7o"

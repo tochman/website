@@ -1,7 +1,7 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
+  @visitor ||= { :first_name => "Testy", :last_name => "McUserton", :email => "example@example.com",
                  :password => "changeme", :password_confirmation => "changeme" }
 end
 
@@ -30,7 +30,6 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in "user_name", :with => @visitor[:name]
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
   fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
@@ -188,5 +187,13 @@ end
 
 Then /^I should see my name$/ do
   create_user
-  page.should have_content @user[:name]
+  page.should have_content @user[:first_name]
+end
+
+Given /^the sign in form is visible$/ do
+  #expect(page).to have_form('loginForm')
+  expect(page).to have_field('user_email')
+  expect(page).to have_field('user_password')
+  expect(page).to have_button('signin')
+  #click_link 'Org Login'
 end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -6,6 +7,28 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :minis
+  before_action :videos_list
+  helper_method :yt_client, :minis
+  helper_method :resource, :resource_name, :devise_mapping
+
+
+  def yt_client
+    @yt_client ||= YouTubeIt::Client.new(:dev_key => YouTubeITConfig.dev_key)
+  end
+
+  def videos_list
+    results = yt_client.videos_by(:user => 'aeurdstfaksf', :tags => ['hoa'])
+    #results = yt_client.videos_by(:tags => ['agile', 'ruby'])
+    #results = yt_client.videos_by(:tags => ['hoa', 'leopard'], :user => 'aeurdstfaksf')
+    @videos_list = results.videos
+  end
+
+  #private
+  #
+  #def after_sign_in_path_for(resource_or_scope)
+  #  redirect_to root_path
+  #end
+
   protected
 
   def configure_devise_permitted_parameters
@@ -29,18 +52,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :authenticate_user!
   def minis
     if current_user.present?
       if current_user.first_name.present?
-        @mini_name = ([current_user.first_name, ' ', current_user.last_name].join)
+        @mini_name = ([current_user.first_name, current_user.last_name].join(' '))
       else
         @mini_name = current_user.email
       end
-      @mini_avatar = current_user.avatar_url(:mini)
+      @mini_avatar = current_user.avatar_url(:mini) if current_user.avatar.present?
     end
-
-
+  rescue
+    @mini_avatar = 'anonymous_avatar.gif'
   end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
 
 end

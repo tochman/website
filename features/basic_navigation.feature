@@ -7,8 +7,8 @@ Scenario: Make sure Twitter Bootstrap navbar is present
   Then the response status should be "200"
   Then I should see a navigation bar
   And I should see navigation links
-  And I should see the "Contributors" link
   And I should see the "About" link
+  And I should see the "Login" link
 
 
 @allow-rescue
@@ -21,7 +21,7 @@ Scenario: Show custom 404 page
 
 @allow-rescue
 Scenario: Show custom 500 page
-  When I am on the "foobar" page
+  When I am on the "ewew||" page
   Then the page should be titled "500 Internal Error"
   And the response status should be "500"
   Then show me the page

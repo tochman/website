@@ -1,0 +1,47 @@
+<section id="subjects">
+  <table class="table table-striped">
+    <thead>
+    <legend>Pairing groups</legend>
+    <tr>
+      <th style="width:500px">Group</th>
+      <th style="width:100px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @subjects.each do |subject| %>
+        <tr>
+          <td><h4><%= link_to subject.name, subject_path(subject) %></h4><br/>
+            <%= subject.description %><br/>
+            <%= link_to subject.group_url, "#" %></td>
+          <td>Members: <%= subject.followers_count %></td>
+          <td id="follow_subject_<%= subject.id %>">
+            <% if user_signed_in? %>
+            <% if current_user.following?(subject) %>
+                <%= link_to 'Leave group', unfollow_subject_path(subject), :type => "button", :class => 'btn btn-danger btn-xs' %>
+            <% else %>
+                <%= link_to 'Join group', follow_subject_path(subject), :type => "button", :class => 'btn btn-success btn-xs' %>
+            <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show sessions', subject_bookings_path(subject), :type => "button", :class => "btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Add session', new_subject_booking_path(subject), :type => "button", :class => "btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Edit', edit_subject_path(subject), :type => "button", :class => "btn btn-warning btn-xs" %></td>
+          <td><%= link_to 'Delete', subject_path(subject), :type => "button", :class => "btn btn-danger btn-xs", data: {confirm: 'Are you sure?'}, method: :delete %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if user_signed_in? %>
+      <%= link_to "New Group", new_subject_path, :type => 'button', :class => "btn btn-primary" %>
+  <% end %>
+</section>
+
+

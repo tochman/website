@@ -1,0 +1,31 @@
+<div class="col-sm-6">
+  <table class="table table-striped">
+    <legend>Session for <%= @subject.name %></legend>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th style="width:10px"></th>
+      <th style="width:10px"></th>
+    </tr>
+
+    <% @bookings.each do |booking| %>
+        <tr>
+          <td>
+            <%= booking.start_time.strftime('%e %b %Y %H:%M%p') %>
+          </td>
+          <td>
+            <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
+          </td>
+          <td><%= link_to 'Delete', subject_booking_path(@subject, booking), data: {confirm: 'Are you sure?'}, method: :delete %>
+          </td>
+          <td><%= link_to 'Edit', edit_subject_booking_path(@subject, booking) %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="calendar_container">
+  <div id="calendar">
+  </div>
+</div>

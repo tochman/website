@@ -1,0 +1,81 @@
+<section id="devise">
+  <div class='row'>
+    <div class="container form-frame">
+      <%= devise_error_messages! %>
+      <div>
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <%= form_for(resource, :class => 'form-vertical', :url => registration_path(resource_name), :multipart => true, :html => {:method => :put}) do |f| %>
+
+            <% if @user.avatar.url.present? %>
+                <div>
+                  <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive') if @user.avatar? %>
+                  <label>
+                    <%= f.check_box :remove_avatar %>
+                    Remove avatar
+                  </label>
+
+            <% end %>
+            <%= f.file_field :avatar, :class => 'fileinput', :placeholder => 'your avatar' %>
+            <%= f.hidden_field :avatar_cache %></div>
+            <div><%= f.label :email %>
+              <br/>
+              <%= f.email_field :email, class: 'form-control', :value => current_user.email, :autofocus => true %></div>
+            <div><%= f.label :first_name %>
+              <br/>
+              <%= f.text_field :first_name, class: 'form-control', :value => current_user.first_name %></div>
+            <div><%= f.label :last_name %>
+              <br/>
+              <%= f.text_field :last_name, class: 'form-control', :value => current_user.last_name %></div>
+            <div><%= f.label :organization %>
+              <br/>
+              <%= f.text_field :organization, class: 'form-control' , :value => current_user.organization %></div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+            <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br/>
+              <%= f.password_field :password, class: 'form-control', :autocomplete => "off" %></div>
+            <div><%= f.label :password_confirmation %> <br/>
+              <%= f.password_field :password_confirmation, class: 'form-control' %></div>
+            <div><%= f.label :current_password %>
+              <i>(we need your current password to confirm your changes)</i> <br/>
+              <%= f.password_field :current_password, class: 'form-control' %></div>
+            <br/>
+
+            <div><%= f.submit "Update", class: 'btn btn-primary btn-large btn-block' %></div>
+        <% end %>
+        <hr>
+        <div>
+          <h2>Connect Account </h2>
+          <% ['facebook', 'github', 'google_oauth2'].each do |provider| %>
+              <div>
+                <% if current_user.authorizations.pluck(:provider).include?(provider.to_s) %>
+                    <button class="btn btn-lg btn-social-icon btn-<%= provider.to_s.split('_')[0] %> " disabled="disabled">
+                      <% if provider.include? 'google_oauth2' %>
+                          <i class="fa fa-<%= [provider.to_s.split('_')[0], '-plus'].join %>"></i>
+
+                      <% else %>
+                          <i class="fa fa-<%= provider.to_s %>"></i>
+
+                      <% end %>
+                    </button> Connected!
+                <% else %>
+                    <a href="<%= omniauth_authorize_path('user', provider) %>" class="btn btn-lg btn-social-icon btn-<%= provider.to_s.split('_')[0] %> ">
+                      <% if provider.include? 'google_oauth2' %>
+                          <i class="fa fa-<%= [provider.to_s.split('_')[0], '-plus'].join %>"></i>
+
+                      <% else %>
+                          <i class="fa fa-<%= provider.to_s %>"></i>
+
+                      <% end %>
+                    </a> Not connected to <%= provider.to_s.titleize.split[0] %>
+              <% end %>
+                <p></p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

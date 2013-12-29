@@ -61,7 +61,7 @@ html, body {
 .form-frame {
   position: relative;
   padding: 30px;
-  max-width: 470px;
+  max-width: 90%;
   border-radius: 2px;
   background: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -108,5 +108,9 @@ html, body {
   background-color: transparent;
 }
 
+#navbutton  {
+  margin: 18px 15px 0px 0px !important;
+  padding: 1px 7px 1px 7px;
+}
 
 

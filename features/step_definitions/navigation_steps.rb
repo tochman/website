@@ -6,7 +6,7 @@ end
 Given(/^(?:|I )am on the "(.*?)" page$/) do |page|
   case page
     when "Home" then visit root_path('show')
-    when "contributors" then visit ("/#{page}")
+    when "contributors" then visit contributors_path
     when "sign up" then visit new_user_registration_path
     when "sign in" then visit new_user_session_path
     when "about" then visit page_path('About')
@@ -25,11 +25,11 @@ end
 
 
 Then /^(?:|I )should see the "([^\"]*)" link$/ do |link|
-  page.should(have_css("a", :text => link))
+  page.should have_css("a", :text => link)
 end
 
 Then /^(?:|I )should not see the "([^\"]*)" link$/ do |link|
-  page.should_not(have_css("a", :text => link))
+  page.should_not have_css("a", :text => link)
 end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
@@ -53,7 +53,7 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
 end
 
 Then(/^the page should be titled "(.*?)"$/) do |title|
-  page.should have_selector("title", title)
+  page.source.should have_css("title", :text => title, :visible => false)
 end
 
 Then /^I should see a link that points to "([^"]*)"$/ do |href_destination|
@@ -106,9 +106,7 @@ And /^I am not signed in as the admin using password "(.*?)"$/ do |password|
 #TODO: Should we bypass mass assgiment in the creation via :without_protection?
 Given /^the following users are registered:$/ do |users_table|
   users_table.hashes.each do |user|
-    user["admin"] = user["admin"] == "true"
-    user["organization"] = Organization.find_by_name(user["organization"])
-    worker = User.create! user, :without_protection => true
+    User.create!(user)
   end
 end
 
@@ -136,18 +134,28 @@ When /^I sign out$/ do
 end
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
-  fill_in "user_email" , :with => email
-  fill_in "user_password" , :with => password
-  click_link_or_button "Sign in"
+  page.should have_css("form#loginForm", :visible => false)
+  click_link "Login"
+  page.should have_css("form#loginForm", :visible => true)
+  within "form#loginForm" do
+    fill_in "user_email" , :with => email
+    fill_in "user_password" , :with => password
+    click_button "Sign in"
+  end
+end
+
+Then(/^I should see a link or button "(.*?)"$/) do |email|
+  page.should have_css("a", :text => email, :visible => true)
+
 end
 
 Given /^I am on the sign in page$/ do
   step "I am on the home page"
-  #expect(page).to have_form('loginForm')
+  expect(page).to have_form('loginForm')
   expect(page).to have_field('user_email')
   expect(page).to have_field('user_password')
   expect(page).to have_button('signin')
-  #click_link 'Org Login'
+
 end
 
 Given /^I am on the sign up page$/ do
@@ -164,4 +172,11 @@ When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |
     Given I am on the sign in page
     And I sign in as "#{email}" with password "#{password}"
   }
+end
+Then(/^I should be on the (.*?) page$/) do |page|
+  URI.parse(current_url).path.should == '/' + page
+end
+
+When(/^the URL should contain "(.*?)"$/) do |string|
+  URI.parse(current_url).path.should == '/' + string
 end

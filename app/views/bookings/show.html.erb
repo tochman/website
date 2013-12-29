@@ -1,0 +1,7 @@
+<h3>Session Confirmation</h3>
+<p>Your session is confirmed for
+  <%= @subject.name %>:
+  <%= @booking.start_time.strftime('%e %b %Y %H:%M%p') %>
+  until
+  <%= (@booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
+
