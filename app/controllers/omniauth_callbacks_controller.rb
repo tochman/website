@@ -5,7 +5,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     p env["omniauth.auth"]
     user = User.from_omniauth(env["omniauth.auth"], current_user)
     if user.persisted?
-      flash[:notice] = "Connected! Go to edit profile to see the status for the accounts"
+      flash[:notice] = "Connected!"
       sign_in_and_redirect(user)
     else
       session["devise.user_attributes"] = user.attributes
@@ -24,7 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     scope    = Devise::Mapping.find_scope!(resource_or_scope)
     resource = args.last || resource_or_scope
     sign_in(scope, resource, options)
-    redirect_to edit_user_path(current_user)
+    redirect_to edit_user_registration_path
   end
 
 

@@ -3,9 +3,9 @@
     <div class="container form-frame">
       <%= devise_error_messages! %>
       <div>
-        <h2>Editera <%= resource_name.to_s.humanize %></h2>
-        <%= form_for(resource, :as => resource_name, :class => 'form-vertical', :url => registration_path(resource_name), :multipart => true, :html => {:method => :put}) do |f| %>
-            <% if @mini_avatar == !'anonymous_avatar.gif' %>
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <%= form_for(resource, :class => 'form-vertical', :url => registration_path(resource_name), :multipart => true, :html => {:method => :put}) do |f| %>
+
             <% if @user.avatar.url.present? %>
                 <div>
                   <%= image_tag(@user.avatar_url.to_s, :class => 'img-rounded img-responsive') if @user.avatar? %>
@@ -13,7 +13,7 @@
                     <%= f.check_box :remove_avatar %>
                     Remove avatar
                   </label>
-            <% end %>
+
             <% end %>
             <%= f.file_field :avatar, :class => 'fileinput', :placeholder => 'your avatar' %>
             <%= f.hidden_field :avatar_cache %></div>
