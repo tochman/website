@@ -1,11 +1,16 @@
-#CarrierWave.configure do |config|
-#  config.dropbox_app_key = 'chjxxbhpojosbt3'
-#  config.dropbox_app_secret = 'wlton1e4b7zwc7o'
-#  config.dropbox_access_token = 't9iznd2jdniaob89'
-#  config.dropbox_access_token_secret = 'fj8m1eg7u3v89zg'
-#  config.dropbox_user_id = '52190197'
-#  config.dropbox_access_type = 'app_folder'
-#end
+CarrierWave.configure do |config|
+config.base_path = ENV['RACK_BASE_URI']
+config.storage    = :aws
+config.aws_bucket = 'agileventuresstorage'
+config.aws_acl    = :public_read
+config.asset_host = 'https://s3-eu-west-1.amazonaws.com/agileventuresstorage'
+config.aws_authenticated_url_expiration = 60 * 60 * 24 * 365
+
+config.aws_credentials = {
+    access_key_id:     'AKIAJSF632ESQTOHAHAQ',
+    secret_access_key: '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'
+}
+end
 
 if Rails.env.test? or Rails.env.cucumber?
   CarrierWave.configure do |config|

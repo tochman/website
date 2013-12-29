@@ -1,16 +1,18 @@
 # encoding: utf-8
 
 class AvatarUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+include CarrierWave::MiniMagick
 
 
   process :resize_to_fit => [150, 150]
   process :gif_to_jpg_convert
   process :convert => 'jpg'
+
   version :mini do
     process resize_to_fit: [25, 25]
   end
-  storage :dropbox
+
+  storage :aws
 
   def gif_to_jpg_convert
     image = MiniMagick::Image.open(current_path)
@@ -20,6 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
       File.write("public/#{store_dir}/gif_preview.jpg", "") #"touch" file
       image.write "public/#{store_dir}/gif_preview.jpg"
     end
+
     end
   end
 
@@ -37,18 +40,18 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
 
   def default_url
-    # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "anonymous_avatar.gif"].compact.join('_'))
+   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "anonymous_avatar.gif"].compact.join('_'))
 
     'anonymous_avatar.gif'
-    #"/images/" + [version_name, "anonymous.jpg"].compact.join('_')
+     #"/images/" + [version_name, "anonymous.jpg"].compact.join('_')
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+     %w(jpg jpeg gif png)
   end
 
   def filename
-    "avatar-#{model.id}.jpg" if original_filename
+     "avatar-#{model.id}.jpg" if original_filename
   end
 
 end

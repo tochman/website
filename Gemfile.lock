@@ -33,6 +33,10 @@ GEM
     arrayfields (4.9.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
+    aws-sdk (1.31.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -61,9 +65,9 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    carrierwave-dropbox (1.1.1)
-      carrierwave (~> 0.9)
-      dropbox-sdk (~> 1.6)
+    carrierwave-aws (0.3.2)
+      aws-sdk (>= 1.8.0)
+      carrierwave (>= 0.7.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -118,8 +122,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.1)
-    dropbox-sdk (1.6.3)
-      json
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -352,6 +354,7 @@ GEM
       rack
       raindrops (~> 0.7)
     uri-handler (1.0.2)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.16.1)
@@ -390,14 +393,13 @@ DEPENDENCIES
   capybara (= 2.0.2)
   capybara-webkit (~> 1.0.0)
   carrierwave
-  carrierwave-dropbox
+  carrierwave-aws
   coffee-rails (~> 4.0.0)
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner (= 1.0.1)
   debugger
   devise
-  dropbox-sdk (~> 1.6.3)
   execjs
   factory_girl_rails
   figaro
