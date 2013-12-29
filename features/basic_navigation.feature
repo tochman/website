@@ -23,7 +23,7 @@ Examples:
   | Pairing groups |
 
 Scenario: Test if the pulldown is present and contains login form
-  Given I click on "Check in" link
+  Given I click on "navLogin" link
   Then I should see a login in form
   #id = "loginForm"
   And I should see "username" field
