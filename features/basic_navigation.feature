@@ -2,13 +2,42 @@ Feature: In order to make sure relevant content is shown to the user
   As a site admin
   I want to make sure the relevant content are displayed in the navigation bar
 
-Scenario: Make sure Twitter Bootstrap navbar is present
+Background:
   Given I am on the "Home" page
   Then the response status should be "200"
+
+Scenario: Make sure Twitter Bootstrap navbar is present
   Then I should see a navigation bar
+
+Scenario Outline: Test if the links on navbar are working
   And I should see navigation links
-  And I should see the "About" link
-  And I should see the "Check in" link
+  And I should see the <link> link
+Examples:
+  | link           |
+  | About          |
+  | Check in       |
+  | Sign up        |
+  | Home           |
+  | The Team       |
+  | Agile Videos   |
+  | Pairing groups |
+
+Scenario: Test if the pulldown is present and contains login form
+  Given I click on "Check in" link
+  Then I should see a login in form
+  #id = "loginForm"
+  And I should see "username" field
+  And I should see "password" field
+  And I should see "Sign in" button
+
+
+
+
+
+
+
+
+
 
 
 @allow-rescue
