@@ -34,20 +34,23 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id]).destroy
     if @document.destroy
       flash[:notice] = "Document deleted"
-      redirect_to project_document_path(@project)
+      redirect_to project_documents_path(@project)
     else
       render 'index'
     end
   end
 
   def edit
-    @document = Document.find(params[:id])
+    #@document = Document.find(params[:id])
+    update
   end
 
   def update
     @document = Document.find(params[:id])
+    @document.title = params[:content][:document_title][:value]
+    @document.body = params[:content][:document_body][:value]
 
-    if @document.update(params[:document].permit(:title, :body, :public, :project_id, :created_at))
+    if @document.update(params[:document])
       flash[:notice] = 'Your document was updated succesfully'
 
       if request.xhr?
@@ -58,6 +61,14 @@ class DocumentsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def mercury_update
+    @document = Document.find(params[:id])
+    @document.title = params[:content][:document_title][:value]
+    @document.body = params[:content][:document_body][:value]
+    @document.save!
+    #render text: ""
   end
 
   private

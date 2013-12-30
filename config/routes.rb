@@ -1,12 +1,15 @@
 Website::Application.routes.draw do
-
+  mount Mercury::Engine => '/'
+  Mercury::Engine.routes
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   resources :users
 
   resources :projects do
-    resources :documents
+    resources :documents do
+      member { post :mercury_update }
+    end
   end
 
   resources :videos do
