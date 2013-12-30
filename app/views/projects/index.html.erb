@@ -18,14 +18,14 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.title %></td>
+        <td><strong><%= project.title %></strong></td>
         <td><%= project.body %></td>
         <td><%= project.created %></td>
         <td><%= project.public %></td>
-        <td><%= link_to 'Show', project, :type => "button", :class => 'btn btn-success btn-xs' %> </td>
-        <td><%= link_to 'Docs', project_documents_path(project.id), :type => "button", :class => 'btn btn-success btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_project_path(project), :type => "button", :class => 'btn btn-success btn-xs' %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-success btn-xs' %></td>
+        <td><%= link_to 'Documents', project_documents_path(project.id), :type => "button", :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Show', project, :type => "button", :class => 'btn btn-warning btn-xs' %> </td>
+        <td><%= link_to 'Edit', edit_project_path(project), :type => "button", :class => 'btn btn-primary btn-xs' %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-danger btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

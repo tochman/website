@@ -12,12 +12,19 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @document = Document.new(project_id: @project.id, public: true)
+    @document = Document.new(project_id: @project.id,
+                             public: true,
+                             title: 'New document for ' + @project.title,
+                             body: 'Content of document')
   end
 
   def create
     #@document = @project.documents.build(params[:document].permit(:project_id))
-    @document =  Document.new(params[:document].permit(:title, :body, :public, :project_id, :created_at))
+    @document =  Document.new(params[:document].permit(:title,
+                                                       :body,
+                                                       :public,
+                                                       :project_id,
+                                                       :created_at))
     @document.project = @project
     if @document.save
       redirect_to project_documents_path(@project, method: :get)
@@ -34,20 +41,23 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id]).destroy
     if @document.destroy
       flash[:notice] = "Document deleted"
-      redirect_to project_document_path(@project)
+      redirect_to project_documents_path(@project)
     else
       render 'index'
     end
   end
 
   def edit
-    @document = Document.find(params[:id])
+    #@document = Document.find(params[:id])
+    update
   end
 
   def update
     @document = Document.find(params[:id])
+    @document.title = params[:content][:document_title][:value]
+    @document.body = params[:content][:document_body][:value]
 
-    if @document.update(params[:document].permit(:title, :body, :public, :project_id, :created_at))
+    if @document.update(params[:document])
       flash[:notice] = 'Your document was updated succesfully'
 
       if request.xhr?
@@ -58,6 +68,14 @@ class DocumentsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def mercury_update
+    @document = Document.find(params[:id])
+    @document.title = params[:content][:document_title][:value]
+    @document.body = params[:content][:document_body][:value]
+    @document.save!
+    #render text: ""
   end
 
   private
@@ -82,7 +100,11 @@ class DocumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def document_params
-    params.require(:document).permit(:title, :body, :public, :project_id, :created_at)
+    params.require(:document).permit(:title,
+                                     :body,
+                                     :public,
+                                     :project_id,
+                                     :created_at)
   end
 end
 

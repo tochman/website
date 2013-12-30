@@ -23,16 +23,16 @@
           <td id="follow_subject_<%= subject.id %>">
             <% if user_signed_in? %>
             <% if current_user.following?(subject) %>
-                <%= link_to 'Leave group', unfollow_subject_path(subject), :type => "button", :class => 'btn btn-danger btn-xs' %>
+                <%= link_to 'Leave group', unfollow_subject_path(subject), :type => 'button', :class => 'btn btn-danger btn-xs' %>
             <% else %>
-                <%= link_to 'Join group', follow_subject_path(subject), :type => "button", :class => 'btn btn-success btn-xs' %>
+                <%= link_to 'Join group', follow_subject_path(subject), :type => 'button', :class => 'btn btn-success btn-xs' %>
             <% end %>
             <% end %>
           </td>
-          <td><%= link_to 'Show sessions', subject_bookings_path(subject), :type => "button", :class => "btn btn-default btn-xs" %></td>
-          <td><%= link_to 'Add session', new_subject_booking_path(subject), :type => "button", :class => "btn btn-default btn-xs" %></td>
-          <td><%= link_to 'Edit', edit_subject_path(subject), :type => "button", :class => "btn btn-warning btn-xs" %></td>
-          <td><%= link_to 'Delete', subject_path(subject), :type => "button", :class => "btn btn-danger btn-xs", data: {confirm: 'Are you sure?'}, method: :delete %></td>
+          <td><%= link_to 'Show sessions', subject_bookings_path(subject), :type => 'button', :class => 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Add session', new_subject_booking_path(subject), :type => 'button', :class => 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Edit', edit_subject_path(subject), :type => 'button', :class => 'btn btn-warning btn-xs' %></td>
+          <td><%= link_to 'Delete', subject_path(subject), :type => 'button', :class => 'btn btn-danger btn-xs', data: {confirm: 'Are you sure?'}, method: :delete %></td>
         </tr>
     <% end %>
     </tbody>
@@ -40,7 +40,7 @@
 
   <br>
   <% if user_signed_in? %>
-      <%= link_to "New Group", new_subject_path, :type => 'button', :class => "btn btn-primary" %>
+      <%= link_to "New Group", new_subject_path, :type => 'button', :class => 'btn btn-primary' %>
   <% end %>
 </section>
 

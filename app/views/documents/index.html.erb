@@ -17,13 +17,13 @@
     <tbody>
     <% @documents.each do |document| %>
         <tr>
-          <td><%= document.title %></td>
-          <td><%= document.body %></td>
+          <td><strong><%= sanitize(document.title, :tags=>[' ']) %></strong></td>
+          <td><%= sanitize(document.body.gsub("&nbsp;", " \n"), :tags=>[' ']) %></td>
           <td><%= document.created_at %></td>
           <td><%= document.public %></td>
+          <td><%= link_to 'Edit', '/editor' + project_document_path(@project, document), id: 'edit_link', data: {save_url: mercury_update_project_document_path(@project, document)}, :type => "button", :class => 'btn btn-default btn-xs' %></td>
           <td><%= link_to 'Show', project_document_path(@project, document), :type => "button", :class => 'btn btn-success btn-xs'  %></td>
-          <td><%= link_to 'Edit', edit_project_document_path(@project, document), :type => "button", :class => 'btn btn-success btn-xs' %></td>
-          <td><%= link_to 'Destroy', project_document_path(@project, document), method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-success btn-xs' %></td>
+          <td><%= link_to 'Destroy', project_document_path(@project, document), method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-danger btn-xs' %></td>
         </tr>
     <% end %>
     </tbody>
