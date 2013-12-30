@@ -38,19 +38,6 @@ ActiveRecord::Schema.define(version: 20131230002843) do
 
   add_index "bookings", ["subject_id"], name: "index_bookings_on_subject_id", using: :btree
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.integer  "charity_commission_id"
-    t.string   "charity_commission_name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "categories_organizations", force: true do |t|
-    t.integer "category_id"
-    t.integer "organization_id"
-  end
-
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
     t.text     "comment"
@@ -68,11 +55,13 @@ ActiveRecord::Schema.define(version: 20131230002843) do
   create_table "documents", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "public"
-    t.integer  "project_id"
   end
+
+  add_index "documents", ["project_id"], name: "index_documents_on_project_id", using: :btree
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -86,32 +75,6 @@ ActiveRecord::Schema.define(version: 20131230002843) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
-
-  create_table "organizations", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "postcode"
-    t.string   "email"
-    t.text     "description"
-    t.string   "website"
-    t.string   "telephone"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.boolean  "gmaps"
-    t.text     "donation_info"
-  end
-
-  create_table "pages", force: true do |t|
-    t.string   "name"
-    t.string   "permalink"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"

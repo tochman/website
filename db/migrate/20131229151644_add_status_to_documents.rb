@@ -1,5 +1,5 @@
 class AddStatusToDocuments < ActiveRecord::Migration
-  def change
-    add_column :documents, :public, :boolean
+  def up
+    add_column :documents, :project_id, :integer
   end
 end
