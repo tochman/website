@@ -3,7 +3,7 @@ class CreateDocuments < ActiveRecord::Migration
     create_table :documents do |t|
       t.string :title
       t.text :body
-      t.belongs_to :project
+      t.integer :project_id
       t.timestamps
     end
   end

@@ -1,0 +1,12 @@
+<%= simple_form_for([@project, @document], :html => { :class => 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :title , :input_html => { :class => "form-control" }, :placeholder => "A short, descriptive title" %>
+      <%= f.input :body, :input_html => { :class => "form-control", :style => "height: 250px;" }, :placeholder => "The content of the document" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>

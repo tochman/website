@@ -6,8 +6,9 @@ class DocumentsController < ApplicationController
 
   def index
     #TODO: Set .order?
-    @documents = Document.find_by_id(@project)
-    respond_with @document
+    @documents = Document..where("project_id = ?", @subject.id).order(:created_at)
+    #@documents = Document.find_by_id(@project)
+    respond_with @documents
   end
 
   def new
@@ -15,10 +16,11 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document =  Document.new(params[:document].permit(:project_id))
+    @document = @project.documents.build(params[:document].permit(:project_id))
+    #@document =  Document.new(params[:document].permit(:project_id))
     @document.project = @project
     if @document.save
-      redirect_to project_document_path(@project, method: :get)
+      redirect_to project_documents_path(@project, method: :get)
     else
       render 'new'
     end
@@ -51,7 +53,7 @@ class DocumentsController < ApplicationController
       if request.xhr?
         render json: {status: :success}.to_json
       else
-        redirect_to project_document_path(@project)
+        redirect_to project_documents_path(@project)
       end
     else
       render 'edit'
@@ -73,7 +75,7 @@ class DocumentsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def find_project
-    if params[:subject_id]
+    if params[:project_id]
       @project = Project.find_by_id(params[:project_id])
     end
   end
