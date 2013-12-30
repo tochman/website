@@ -1,10 +1,2 @@
 
-
-
-<h3><span id="document_title" class="mercury-region" data-mercury="full" data-type="editable"><%= raw @document.title  %></span></h3>
-<small>Created: <%= @document.created_at -%> Project: <%= @project.title %> </small>
-<div id="document_body" class="mercury-region" data-mercury="full" data-type="editable"><%= raw @document.body  %></div>
-
-
-<p><%= link_to "Edit Page", "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_project_document_path(@project, @document)}, :type => "button", :class => 'btn btn-primary'%></p>
-
+<%= render 'mercury' %>

@@ -12,12 +12,19 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @document = Document.new(project_id: @project.id, public: true)
+    @document = Document.new(project_id: @project.id,
+                             public: true,
+                             title: 'New document for ' + @project.title,
+                             body: 'Content of document')
   end
 
   def create
     #@document = @project.documents.build(params[:document].permit(:project_id))
-    @document =  Document.new(params[:document].permit(:title, :body, :public, :project_id, :created_at))
+    @document =  Document.new(params[:document].permit(:title,
+                                                       :body,
+                                                       :public,
+                                                       :project_id,
+                                                       :created_at))
     @document.project = @project
     if @document.save
       redirect_to project_documents_path(@project, method: :get)
@@ -93,7 +100,11 @@ class DocumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def document_params
-    params.require(:document).permit(:title, :body, :public, :project_id, :created_at)
+    params.require(:document).permit(:title,
+                                     :body,
+                                     :public,
+                                     :project_id,
+                                     :created_at)
   end
 end
 

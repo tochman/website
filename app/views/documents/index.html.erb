@@ -18,7 +18,7 @@
     <% @documents.each do |document| %>
         <tr>
           <td><strong><%= sanitize(document.title, :tags=>[' ']) %></strong></td>
-          <td><%= sanitize(document.body.gsub!("&nbsp;", " \n"), :tags=>[' ']) %></td>
+          <td><%= sanitize(document.body.gsub("&nbsp;", " \n"), :tags=>[' ']) %></td>
           <td><%= document.created_at %></td>
           <td><%= document.public %></td>
           <td><%= link_to 'Edit', '/editor' + project_document_path(@project, document), id: 'edit_link', data: {save_url: mercury_update_project_document_path(@project, document)}, :type => "button", :class => 'btn btn-default btn-xs' %></td>
