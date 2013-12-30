@@ -1,0 +1,6 @@
+<h1>Editing document</h1>
+
+<%= render 'form' %>
+<br />
+<%= link_to 'Show', project_document_path(@project, @document), :type => "button", :class => 'btn btn-primary' %>
+<%= link_to 'Back', project_documents_path(@project), :type => "button", :class => 'btn btn-primary' %>
