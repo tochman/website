@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227140939) do
+ActiveRecord::Schema.define(version: 20131230002843) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131227140939) do
     t.string   "url"
   end
 
-  add_index "bookings", ["subject_id"], name: "index_bookings_on_subject_id"
+  add_index "bookings", ["subject_id"], name: "index_bookings_on_subject_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -45,9 +48,20 @@ ActiveRecord::Schema.define(version: 20131227140939) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "documents", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "public"
+  end
+
+  add_index "documents", ["project_id"], name: "index_documents_on_project_id", using: :btree
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -59,8 +73,8 @@ ActiveRecord::Schema.define(version: 20131227140939) do
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -100,9 +114,9 @@ ActiveRecord::Schema.define(version: 20131227140939) do
     t.string   "avatar"
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "title"

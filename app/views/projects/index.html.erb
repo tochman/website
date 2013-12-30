@@ -1,16 +1,17 @@
 <section id="projects">
 <h1>Listing projects</h1>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th style="width:100px">Title</th>
-      <th>Body</th>
+      <th style="width:150px"><strong>Title</strong></th>
+      <th style="width:250px">Body</th>
       <th style="width:100px">Created</th>
       <th style="width:10px">Public</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
     </tr>
   </thead>
 
@@ -21,9 +22,10 @@
         <td><%= project.body %></td>
         <td><%= project.created %></td>
         <td><%= project.public %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project, :type => "button", :class => 'btn btn-success btn-xs' %> </td>
+        <td><%= link_to 'Docs', project_documents_path(project.id), :type => "button", :class => 'btn btn-success btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), :type => "button", :class => 'btn btn-success btn-xs' %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-success btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,6 +33,6 @@
 
 <br>
 <% if user_signed_in? %>
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_project_path, :type => "button", :class => 'btn btn-primary' %>
  <% end %>
 </section>
