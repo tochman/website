@@ -181,7 +181,7 @@ When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string
 end
 When(/^I should see the (.*) link$/) do |link|
-  page.should have_link /\A#{link}\Z/
+  page.should have_link link
 end
 Given(/^I click on "([^"]*)" link$/) do |link|
   within ('.navbar') do

@@ -61,7 +61,7 @@ group :test do
   gem 'selenium-client'
 end
 
-#Omniauth gems
+#Omniauth gems & social integration
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
@@ -69,10 +69,11 @@ gem 'omniauth-google-oauth2'
 #gem 'omniauth-dropbox'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-twitter'
-
 gem 'koala'
-
-
-#social gems
 #gem 'linkedin'
 #gem 'twitter'
+
+
+#Document editing - CMS functionality
+gem 'mercury-rails', :github => "jejacks0n/mercury"
+gem 'jquery-migrate-rails'

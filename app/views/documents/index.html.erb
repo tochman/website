@@ -1,0 +1,35 @@
+<section id="projects">
+  <h1>Documents for <%= @project.title %> </h1>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th style="width:150px"><strong>Title</strong></th>
+      <th style="width:250px">Body</th>
+      <th style="width:100px">Created</th>
+      <th style="width:10px">Public</th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+      <th style="width:15px"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @documents.each do |document| %>
+        <tr>
+          <td><strong><%= sanitize(document.title, :tags=>[' ']) %></strong></td>
+          <td><%= sanitize(document.body.gsub("&nbsp;", " \n"), :tags=>[' ']) %></td>
+          <td><%= document.created_at %></td>
+          <td><%= document.public %></td>
+          <td><%= link_to 'Edit', '/editor' + project_document_path(@project, document), id: 'edit_link', data: {save_url: mercury_update_project_document_path(@project, document)}, :type => "button", :class => 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Show', project_document_path(@project, document), :type => "button", :class => 'btn btn-success btn-xs'  %></td>
+          <td><%= link_to 'Destroy', project_document_path(@project, document), method: :delete, data: { confirm: 'Are you sure?' }, :type => "button", :class => 'btn btn-danger btn-xs' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+  <% if user_signed_in? %>
+      <%= link_to 'New Document', new_project_document_path(@project), :type => "button", :class => 'btn btn-primary' %>
+  <% end %>
+</section>
