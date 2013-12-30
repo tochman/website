@@ -6,18 +6,18 @@ class DocumentsController < ApplicationController
 
   def index
     #TODO: Set .order?
-    @documents = Document..where("project_id = ?", @subject.id).order(:created_at)
+    @documents = Document.where("project_id = ?", @project.id).order(:created_at)
     #@documents = Document.find_by_id(@project)
     respond_with @documents
   end
 
   def new
-    @document = Document.new(project_id: @project.id)
+    @document = Document.new(project_id: @project.id, public: true)
   end
 
   def create
-    @document = @project.documents.build(params[:document].permit(:project_id))
-    #@document =  Document.new(params[:document].permit(:project_id))
+    #@document = @project.documents.build(params[:document].permit(:project_id))
+    @document =  Document.new(params[:document].permit(:title, :body, :public, :project_id, :created_at))
     @document.project = @project
     if @document.save
       redirect_to project_documents_path(@project, method: :get)
@@ -47,7 +47,7 @@ class DocumentsController < ApplicationController
   def update
     @document = Document.find(params[:id])
 
-    if @document.update(params[:document].permit(:project_id))
+    if @document.update(params[:document].permit(:title, :body, :public, :project_id, :created_at))
       flash[:notice] = 'Your document was updated succesfully'
 
       if request.xhr?
@@ -82,7 +82,7 @@ class DocumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def document_params
-    params.require(:document).permit(:title, :body, :public)
+    params.require(:document).permit(:title, :body, :public, :project_id, :created_at)
   end
 end
 
