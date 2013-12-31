@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :minis
   before_action :videos_list
   helper_method :yt_client, :minis
-  helper_method :resource, :resource_name, :devise_mapping
+  helper_method :resource, :resource_name, :devise_mapping, :contactus, :contact_name
 
 
   def yt_client
@@ -71,6 +71,15 @@ class ApplicationController < ActionController::Base
 
   def resource
     @resource ||= User.new
+
+  end
+
+  def contactus
+    @contact ||= Contact.new
+  end
+
+  def contact_name
+    :contact
   end
 
   def devise_mapping
