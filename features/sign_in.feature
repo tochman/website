@@ -1,7 +1,7 @@
 Feature: Sign in
-  In order to get access to protected sections of the site
-  A user
-  Should be able to sign in
+  As an existing User
+  So that I can use the systems all functions
+  I want to be able to login
 
   Scenario: User is not signed up
     Given I do not exist as a user
@@ -17,16 +17,13 @@ Feature: Sign in
     When I return to the site
     Then I should be signed in
 
-  Scenario: User enters wrong email
+  Scenario Outline: User enters wrong credentials
     Given I exist as a user
     And I am not logged in
-    When I sign in with a wrong email
+    When I sign in with a wrong <credential>
     Then I see an invalid login message
     And I should be signed out
-
-  Scenario: User enters wrong password
-    Given I exist as a user
-    And I am not logged in
-    When I sign in with a wrong password
-    Then I see an invalid login message
-    And I should be signed out
+  Examples:
+    |credential|
+    |password  |
+    |email     |

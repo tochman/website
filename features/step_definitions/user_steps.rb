@@ -1,9 +1,15 @@
 ### UTILITY METHODS ###
 
+
 def create_visitor
-  @visitor ||= { :first_name => "Testy", :last_name => "McUserton", :email => "example@example.com",
-                 :password => "changeme", :password_confirmation => "changeme" }
+  #@visitor =FactoryGirl(:user)
+  @visitor ||= { :first_name => "Testy",
+                 :last_name => "McUserton",
+                 :email => "example@example.com",
+                 :password => "changeme",
+                 :password_confirmation => "changeme" }
 end
+
 
 def find_user
   @user ||= User.where(:email => @visitor[:email]).first
@@ -30,19 +36,27 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in "user_email", :with => @visitor[:email]
-  fill_in "user_password", :with => @visitor[:password]
-  fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
-  find_user
+  within ('#wrap') do
+    fill_in "user_email", :with => @visitor[:email]
+    fill_in "user_password", :with => @visitor[:password]
+    fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
+    click_button "Sign up"
+    find_user
+  end
 end
 
 def sign_in
   visit '/'
-  #visit '/users/sign_in'
-  fill_in "user_email", :with => @visitor[:email]
-  fill_in "user_password", :with => @visitor[:password]
-  click_button "Sign in"
+  within ('.navbar') do
+    page.should have_css("form#loginForm", :visible => false)
+    find('a', :text => 'Check-in').click
+    page.should have_css("form#loginForm", :visible => true)
+    within "form#loginForm" do
+      fill_in "user_email", :with => @visitor[:email]
+      fill_in "user_password", :with => @visitor[:password]
+      click_button "Sign in"
+    end
+  end
 end
 
 ### GIVEN ###
@@ -75,6 +89,11 @@ When /^I sign in with valid credentials$/ do
 end
 
 When /^I sign out$/ do
+  username = [@visitor[:first_name], @visitor[:last_name]].join(' ')
+  page.should have_css('a[href="/users/sign_out"]', :text => 'Log out', :visible => false)
+  find("a[id='#{username}']").click
+  page.should have_css('a[href="/users/sign_out"]', :text => 'Log out', :visible => true)
+  #find('a[href="/users/sign_out"]').click
   visit '/users/sign_out'
 end
 
@@ -122,8 +141,11 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
-  fill_in "user_name", :with => "newname"
+  visit '/users/edit'
+  #click_link "Edit account"
+  fill_in "user_first_name", :with => "newname"
+  fill_in "user_last_name", :with => "Lastname"
+  fill_in "user_organization", :with => "Company"
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
 end
@@ -134,15 +156,16 @@ end
 
 ### THEN ###
 Then /^I should be signed in$/ do
-  page.should have_content "Logout"
+  current_user.should == @user
+  page.should have_selector('a[href="/users/sign_out"]')
   page.should_not have_content "Sign up"
-  page.should_not have_content "Login"
+  page.should_not have_content "Check-in"
 end
 
 Then /^I should be signed out$/ do
   page.should have_content "Sign up"
-  page.should have_content "Login"
-  page.should_not have_content "Logout"
+  page.should have_content "Check-in"
+  page.should_not have_content "Log out"
 end
 
 Then /^I see an unconfirmed account message$/ do
@@ -166,11 +189,11 @@ Then /^I should see a missing password message$/ do
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "Password confirmation doesn't match"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "Password confirmation doesn't match "
 end
 
 Then /^I should see a signed out message$/ do
@@ -196,4 +219,8 @@ Given /^the sign in form is visible$/ do
   expect(page).to have_field('user_password')
   expect(page).to have_button('signin')
   #click_link 'Org Login'
+end
+
+Given(/^The database is clean$/) do
+  DatabaseCleaner.clean
 end

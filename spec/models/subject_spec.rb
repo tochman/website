@@ -6,18 +6,20 @@ describe Subject do
   end
 
   it "is valid with name" do
-    sub = build(:subject, name: 'John')
-    expect(sub).to be_valid
+    subject = build(:subject, name: 'Pair programming')
+    expect(subject).to be_valid
   end
 
   it "is invalid without a name" do
-    sub = build(:subject, name: nil)
-    expect(sub).to have(1).errors_on(:name)
+    subject = build(:subject, name: nil)
+    subject.should_not be_valid
+    expect(subject).to have(1).errors_on(:name)
   end
 
   it "is invalid with a duplicate name" do
-    create(:subject, name: 'John')
-    sub = build(:subject, name: 'John')
-    expect(sub).to have(1).errors_on(:name)
+    create(:subject, name: 'Pair programming')
+    subject = build(:subject, name: 'Pair programming')
+    subject.should_not be_valid
+    expect(subject).to have(1).errors_on(:name)
   end
 end

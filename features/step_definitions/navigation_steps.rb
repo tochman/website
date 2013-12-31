@@ -129,9 +129,7 @@ Then /^I should not be signed in as any user$/ do
   }
 end
 
-When /^I sign out$/ do
-  click_link 'Log out'
-end
+
 
 Given /^I sign in as "(.*?)" with password "(.*?)"$/ do |email, password|
   page.should have_css("form#loginForm", :visible => false)
@@ -165,7 +163,7 @@ Given /^I am on the sign up page$/ do
   #expect(page).to have_button('signup')
 end
 
-When(/^I sign in as "(.*?)" with password "(.*?)" via email confirmation$/) do |email, password|
+When(/^I sign in as "(.*?)" with password "(.*?)"$/) do |email, password|
   user = User.find_by_email("#{email}")
   user.confirm!
   steps %Q{
@@ -180,9 +178,11 @@ end
 When(/^the URL should contain "(.*?)"$/) do |string|
   URI.parse(current_url).path.should == '/' + string
 end
+
 When(/^I should see the (.*) link$/) do |link|
   page.should have_link link
 end
+
 Given(/^I click on "([^"]*)" link$/) do |link|
   within ('.navbar') do
     find('a', :text => /\A#{link}\Z/).click
