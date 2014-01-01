@@ -10,50 +10,10 @@ module Bookable
     validate :overlaps
 
     before_validation :calculate_end_time
-  
-
-    #scope :end_during, ->(new_start_time, new_end_time) do
-    #  if (!new_start_time.nil?) && (!new_end_time.nil?)
-    #    where('end_time > ? AND end_time < ?', new_start_time, new_end_time)
-    #  else
-    #    return nil
-    #  end
-    #end
-    #
-    #scope :start_during, ->(new_start_time, new_end_time) do
-    #  if (!new_start_time.nil?) && (!new_end_time.nil?)
-    #    where('start_time > ? AND start_time < ?', new_start_time, new_end_time)
-    #  else
-    #    return nil
-    #  end
-    #end
-    #
-    #scope :happening_during, ->(new_start_time, new_end_time) do
-    #  if (!new_start_time.nil?) && (!new_end_time.nil?)
-    #    where('start_time > ? AND end_time < ?', new_start_time, new_end_time)
-    #  else
-    #    return nil
-    #  end
-    #end
-    #
-    #scope :enveloping, ->(new_start_time, new_end_time) do
-    #  if (!new_start_time.nil?) && (!new_end_time.nil?)
-    #    where('start_time < ? AND end_time > ?', new_start_time, new_end_time)
-    #  else
-    #    return nil
-    #  end
-    #end
-    #
-    #scope :identical, ->(new_start_time, new_end_time) do
-    #  if (!new_start_time.nil?) && (!new_end_time.nil?)
-    #    where('start_time = ? AND end_time = ?', new_start_time, new_end_time)
-    #  else
-    #    return nil
-    #  end
-    #end
 
 
     scope :time_constraint, ->(c1, f1, c2, f2) do
+      debugger
       return nil unless f1 && f2
       where "%s ? AND %s ?" % [c1, c2], f1, f2
     end
@@ -66,16 +26,14 @@ module Bookable
 
   end
 
-
-
     def overlaps
-    overlapping_bookings = [ 
-      subject.bookings.end_during(start_time, end_time),
-      subject.bookings.start_during(start_time, end_time),
-      subject.bookings.happening_during(start_time, end_time),
-      subject.bookings.enveloping(start_time, end_time),
-      subject.bookings.identical(start_time, end_time)
-    ].flatten
+    overlapping_bookings = [
+      subject.bookings(:end_during),
+      subject.bookings(:start_during),
+      subject.bookings(:happening_during),
+      subject.bookings(:enveloping),
+      subject.bookings(:identical)
+    ].flatten(1)
 
     overlapping_bookings.delete self
     if overlapping_bookings.any?
