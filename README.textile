@@ -1,5 +1,16 @@
 h1. Website
 
-This is a testing playground for different techniques that I use in various projects.
+[![Code Climate](https://codeclimate.com/github/tochman/website.png)](https://codeclimate.com/github/tochman/website)
+
+This was a testing playground for different techniques that I use in various projects.  Over time the project evolved in an prototype for a pair programming community.
+
+
+h1. Main features
+User authentication and authorization with Devise and OmniAuth
+h2. PP Groups
+
+h2. Projects
+
+h2. Video library
 
 
