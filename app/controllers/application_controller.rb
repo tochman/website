@@ -86,5 +86,14 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  module GetFeedModule
+    def get_feed(feed)
+      url = feed
+      response = Net::HTTP.get_response(URI.parse(url))
+      @data = response.body
+
+    end
+
+  end
 
 end
