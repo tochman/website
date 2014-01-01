@@ -1,5 +1,25 @@
 h1. Website
 
-This is a testing playground for different techniques that I use in various projects.
+"!https://codeclimate.com/github/tochman/website.png!":https://codeclimate.com/github/tochman/website
+This was a testing playground for different techniques that I use in various projects.  
+Over time the project evolved in a prototype for a pair programming community.
+
+
+h1. Main features
+
+User authentication and authorization with Devise and OmniAuth
+
+h2. PP Groups
+
+User can join/follow PP Groups and set up sessions in calendar.
+
+h2. Projects
+
+List of ongoing projects. Each project can have documents attached to it with possibility to edit them WYSIWYG-style.
+
+
+h2. Video library
+
+List of YouTube recordings of Agile Venture Hangouts.
 
 
