@@ -190,6 +190,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.5.0)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     main (5.2.0)
       arrayfields (>= 4.7.4)
       chronic (>= 0.6.2)
@@ -423,6 +426,7 @@ DEPENDENCIES
   json
   koala
   launchy
+  mail_form (~> 1.5.0)
   mercury-rails!
   metric_fu
   mini_magick

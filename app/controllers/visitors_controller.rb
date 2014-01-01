@@ -1,5 +1,5 @@
 class VisitorsController < ApplicationController
-
+  include GetFeedModule
 
   def new
     @features = Project.where(:public => true)
@@ -13,10 +13,10 @@ class VisitorsController < ApplicationController
   private
 
     def get_repos
-      url = 'https://api.github.com/orgs/AgileVentures/repos'
-      response = Net::HTTP.get_response(URI.parse(url))
-      data = response.body
-      @repos = JSON.parse(data)
+      get_feed('https://api.github.com/orgs/AgileVentures/repos')
+      @repos = JSON.parse(@data)
     end
+
+
 
 end

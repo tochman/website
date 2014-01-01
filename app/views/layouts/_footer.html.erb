@@ -54,12 +54,30 @@
         <h3 class="footer_header">
           Contact us
         </h3>
-        <form action="#" method="post">
+        <%= form_for(contactus, :as => contact_name, :class => 'form-horizontal') do |f|  %>
+            <%= f.label :name %>
+            <%= f.text_field :name, :required => true %>
+            <%= f.label :email %>
+            <%= f.text_field :email, :required => true %>
+            <%= f.label :message %>
+            <%= f.text_area :message, :as => :text, :required => false, :input_html => {:rows => 10} %>
+            <div class="hidden">
+              <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+            </div>
+            <div class="form-actions">
+              <%= f.submit 'Send message', :class=> "btn btn-primary" %>
+            </div>
+        <% end %>
+
+
+
+
+        <!--form action="#" method="post">
           <input type="text" placeholder="Your name" />
           <input type="text" placeholder="Your email" />
           <textarea rows="3" placeholder="Message"></textarea>
           <input type="submit" value="Send" />
-        </form>
+        </form-->
       </div>
     </div>
     <div class="row credits">
