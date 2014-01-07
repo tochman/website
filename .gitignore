@@ -27,6 +27,7 @@ db/*.sqlite3
 .rspec
 .redcar/
 .sass-cache
+/config/initializers/carrierwave.rb
 /config/config.yml
 /config/database.yml
 /coverage.data

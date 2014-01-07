@@ -93,6 +93,24 @@ html, body {
   outline: 0;
   background: #FFF;
 }
+.form-frame, .devise-frame fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+.form-frame, .devise-frame legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 27px;
+  font-size: 19.5px;
+  line-height: 36px;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #E5E5E5;
+}
 
 .glyphicon {
   margin-bottom: 5px;
