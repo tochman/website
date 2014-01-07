@@ -7,8 +7,8 @@ config.asset_host = 'https://s3-eu-west-1.amazonaws.com/agileventuresstorage'
 config.aws_authenticated_url_expiration = 60 * 60 * 24 * 365
 
 config.aws_credentials = {
-    access_key_id:     'AKIAJSF632ESQTOHAHAQ',
-    secret_access_key: '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'
+    :access_key_id     => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
 }
 end
 
