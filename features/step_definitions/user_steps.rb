@@ -143,11 +143,14 @@ end
 When /^I edit my account details$/ do
   visit '/users/edit'
   #click_link "Edit account"
-  fill_in "user_first_name", :with => "newname"
-  fill_in "user_last_name", :with => "Lastname"
-  fill_in "user_organization", :with => "Company"
-  fill_in "user_current_password", :with => @visitor[:password]
-  click_button "Update"
+  within ('section#devise')  do
+    fill_in "user_first_name", :with => "newname"
+    fill_in "user_last_name", :with => "Lastname"
+    fill_in "user_organization", :with => "Company"
+    #fill_in "user_current_password", :with => @visitor[:password]
+    click_button "Update"
+  end
+
 end
 
 When /^I look at the list of users$/ do
