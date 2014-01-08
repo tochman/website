@@ -2,7 +2,12 @@ Website::Application.routes.draw do
   mount Mercury::Engine => '/'
   Mercury::Engine.routes
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  #devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users,
+             :controllers => {
+                 :registrations => "registrations",
+                 :omniauth_callbacks => "omniauth_callbacks"
+             }
 
   resources :users
 
@@ -35,6 +40,8 @@ Website::Application.routes.draw do
 	  resources :bookings
   end
 
+  resources 'contacts', only: [:new, :create]
+
   root :to => 'visitors#new'
   get 'users/:id' => 'users#show'
   get 'users/' => 'users#index'
@@ -44,4 +51,5 @@ Website::Application.routes.draw do
   get '/404', :to => 'errors#not_found'
   get '/422', :to => 'errors#server_error'
   get '/500', :to => 'errors#server_error'
+
 end

@@ -71,14 +71,47 @@ html, body {
 
 }
 
-.form-frame input[type=text], .form-frame input[type=email], .form-frame textarea {
+.devise-frame {
+  position: relative;
+  padding: 30px;
+  max-width: 470px;
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-frame, .devise-frame input[type=text], .form-frame input[type=email], .form-frame textarea {
   background: rgb(235, 241, 245);
   color: rgb(36, 39, 41);
 }
 
-.form-frame  input:focus, .form-frame  textarea:focus {
+.form-frame, .devise-frame  input:focus, .form-frame  textarea:focus {
   outline: 0;
   background: #FFF;
+}
+.form-frame, .devise-frame fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+.form-frame, .devise-frame legend {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 27px;
+  line-height: 36px;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.form-frame, .devise-frame p, a {
+
 }
 
 .glyphicon {
@@ -112,5 +145,7 @@ html, body {
   margin: 18px 15px 0px 0px !important;
   padding: 1px 7px 1px 7px;
 }
+
+
 
 

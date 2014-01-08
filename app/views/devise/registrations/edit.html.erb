@@ -26,16 +26,30 @@
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
-            <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br/>
-              <%= f.password_field :password, class: 'form-control', :autocomplete => "off" %></div>
-            <div><%= f.label :password_confirmation %> <br/>
-              <%= f.password_field :password_confirmation, class: 'form-control' %></div>
-            <div><%= f.label :current_password %>
-              <i>(we need your current password to confirm your changes)</i> <br/>
-              <%= f.password_field :current_password, class: 'form-control' %></div>
-            <br/>
+             <p></p>
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <p class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Change password
+                    </a>
+                  </p>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div>  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br/>
+                    <%= f.password_field :password, class: 'form-control', :autocomplete => "off" %></div>
+                  <div><%= f.label :password_confirmation %> <br/>
+                    <%= f.password_field :password_confirmation, class: 'form-control' %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p></p>
 
-            <div><%= f.submit "Update", class: 'btn btn-primary btn-large btn-block' %></div>
+
+            <div><%= f.submit "Update", class: 'btn btn-primary btn-lg btn-block' %></div>
         <% end %>
       </div>
       <div class="col-lg-6">
@@ -70,7 +84,8 @@
         <h3>Cancel my account</h3>
 
         <p>Unhappy? We would hate to miss you as a friend...
-          :-( <%= button_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-primary btn-large btn-block' %></p>
+          :-( <%= button_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-primary btn-lg btn-block' %></p>
+        <p></p>
         <%= link_to "Back", :back %>
 
       </div>
