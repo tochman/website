@@ -39,6 +39,9 @@ class Authorization < ActiveRecord::Base
 
 
   def fetch_details_from_github
+    github_data = OmniAuth::Strategies::GitHub.new({})
+    self.user.remote_avatar_url = github_data.avatar_url
+    self.user.save(:validate => false)
   end
 
   def fetch_details_from_google_oauth2
